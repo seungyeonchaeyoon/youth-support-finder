@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16345c">
+<title>나에게 맞는 지원 찾기</title>
+
+<style>
+:root {
+  --navy: #16345c;
+  --navy-dark: #102746;
+  --blue: #3978c5;
+  --sky: #eaf4ff;
+  --sky-dark: #d5e9ff;
+  --bg: #f4f7fb;
+  --white: #ffffff;
+  --text: #243247;
+  --muted: #69788c;
+  --border: #dce4ee;
+  --green: #19734a;
+  --green-bg: #e7f6ed;
+  --orange: #a85c12;
+  --orange-bg: #fff2df;
+  --red: #b93838;
+  --red-bg: #ffeded;
+  --gray-bg: #eef1f5;
+  --radius: 16px;
+  --shadow: 0 4px 18px rgba(24, 52, 87, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a, input, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: var(--blue);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 3px solid #85baff;
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1120px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+/* 상단 */
+.header {
+  background: var(--navy);
+  color: white;
+  padding: 18px 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.header-tag {
+  color: #d9eaff;
+  font-size: 12px;
+  border: 1px solid #607da1;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* 소개 */
+.hero {
+  background: linear-gradient(130deg, #16345c 0%, #275c96 100%);
+  color: white;
+  padding: 48px 0 60px;
+}
+
+.hero-label {
+  display: inline-block;
+  color: #d4eaff;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.3;
+  letter-spacing: -1.5px;
+  margin: 0 0 14px;
+}
+
+.hero p {
+  max-width: 620px;
+  color: #e2edfb;
+  margin: 0;
+  font-size: 15px;
+}
+
+.hero-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.hero-features span {
+  font-size: 12px;
+  border-radius: 8px;
+  padding: 7px 11px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.16);
+}
+
+/* 본문 */
+.main {
+  padding: 28px 0 55px;
+}
+
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+  margin-bottom: 24px;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  color: var(--navy);
+  font-size: 21px;
+  margin: 0 0 5px;
+  letter-spacing: -0.5px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 21px 20px;
+}
+
+.field {
+  min-width: 0;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+.field label,
+.field-title {
+  display: block;
+  color: #293a50;
+  font-size: 14px;
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.required-note {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 5px;
+}
+
+.input,
+.select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #cbd6e4;
+  border-radius: 9px;
+  background: white;
+  color: var(--text);
+  padding: 10px 12px;
+}
+
+.input::placeholder {
+  color: #a1acba;
+}
+
+.input:focus,
+.select:focus {
+  border-color: var(--blue);
+  outline: 2px solid #e0efff;
+}
+
+.field-help {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.check-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 45px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  background: white;
+  transition: background .15s, border-color .15s;
+}
+
+.check-option:has(input:checked) {
+  background: var(--sky);
+  border-color: #7baeea;
+  color: var(--navy);
+}
+
+.check-option input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.btn {
+  min-height: 45px;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 19px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: background .15s, transform .15s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--navy-dark);
+}
+
+.btn-secondary {
+  background: #edf2f8;
+  color: #33465e;
+}
+
+.btn-secondary:hover {
+  background: #e1e8f1;
+}
+
+.btn-outline {
+  background: white;
+  color: var(--navy);
+  border: 1px solid #b7c9df;
+}
+
+.btn-outline:hover {
+  background: var(--sky);
+}
+
+.form-actions .btn-primary {
+  flex: 1;
+}
+
+/* 검색 결과 */
+.results-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 34px 0 18px;
+}
+
+.results-header h2 {
+  margin: 0 0 3px;
+  font-size: 24px;
+  color: var(--navy);
+  letter-spacing: -0.8px;
+}
+
+.results-header p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sort-wrap label {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.sort-wrap select {
+  min-height: 40px;
+  max-width: 200px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.result-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.summary-chip {
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--border);
+  padding: 7px 11px;
+  font-size: 12px;
+  color: #506178;
+}
+
+.summary-chip strong {
+  color: var(--navy);
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+.policy-list {
+  display: grid;
+  gap: 16px;
+}
+
+.policy-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card-top {
+  padding: 22px 23px 18px;
+  border-bottom: 1px solid #edf1f6;
+}
+
+.card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.card-heading h3 {
+  margin: 0 0 9px;
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+
+.category-tag {
+  display: inline-block;
+  background: var(--sky);
+  color: #24568c;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.status-badge {
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.status-before {
+  background: #e9efff;
+  color: #3559a6;
+}
+
+.status-open {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.status-ended {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.status-unknown {
+  background: var(--gray-bg);
+  color: #5c6878;
+}
+
+.status-always {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.card-description {
+  color: #506178;
+  font-size: 14px;
+  margin: 13px 0 0;
+  line-height: 1.8;
+}
+
+.card-middle {
+  padding: 20px 23px;
+}
+
+.eligibility-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #2d4058;
+  margin: 0 0 12px;
+}
+
+.match-banner {
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 17px;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.match-banner.match {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.match-banner.mismatch {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.match-banner.unknown {
+  background: var(--orange-bg);
+  color: var(--orange);
+}
+
+.match-banner.neutral {
+  background: var(--gray-bg);
+  color: #596779;
+}
+
+.match-banner small {
+  display: block;
+  font-weight: 400;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+.condition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.condition-item {
+  background: #f7f9fc;
+  border: 1px solid #e8edf4;
+  border-radius: 9px;
+  padding: 12px;
+  min-width: 0;
+}
+
+.condition-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+.condition-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #35465b;
+  overflow-wrap: anywhere;
+}
+
+.condition-detail {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+
+.mini-state {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.mini-match {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.mini-mismatch {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.mini-unknown {
+  background: var(--orange-bg);
+  color: var(--orange);
+}
+
+.mini-neutral {
+  background: var(--gray-bg);
+  color: #596779;
+}
+
+/* 신청 정보 */
+.detail-section {
+  border-top: 1px solid #edf1f6;
+  padding: 19px 23px;
+}
+
+.detail-section h4 {
+  font-size: 14px;
+  color: var(--navy);
+  margin: 0 0 12px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px 20px;
+}
+
+.detail-item {
+  min-width: 0;
+}
+
+.detail-item.full {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 13px;
+  color: #3c4b60;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.date-highlight {
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.source-line {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.source-line a {
+  color: #326fb4;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.card-bottom {
+  padding: 16px 23px;
+  background: #f9fbfe;
+  border-top: 1px solid #edf1f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.card-bottom .btn {
+  min-height: 41px;
+}
+
+.last-checked {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.empty-state {
+  text-align: center;
+  background: white;
+  border: 1px dashed #b9c8da;
+  border-radius: var(--radius);
+  padding: 40px 20px;
+}
+
+.empty-state h3 {
+  color: var(--navy);
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.empty-state p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 auto 18px;
+  max-width: 480px;
+}
+
+.empty-state .btn {
+  margin: 4px;
+}
+
+/* 신뢰성 안내 */
+.notice {
+  border: 1px solid #cfe0f2;
+  background: #eaf4ff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 24px;
+}
+
+.notice h3 {
+  margin: 0 0 7px;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.notice p {
+  color: #435d7a;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.9;
+}
+
+.notice p + p {
+  margin-top: 6px;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 23px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  background: white;
+}
+
+/* 반응형 */
+@media (max-width: 650px) {
+  .container {
+    width: min(100% - 24px, 1120px);
+  }
+
+  .header {
+    padding: 15px 0;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 35px 0 42px;
+  }
+
+  .hero h1 {
+    font-size: 29px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+
+  .panel {
+    padding: 19px 15px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .check-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .results-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .sort-wrap {
+    width: 100%;
+  }
+
+  .sort-wrap select {
+    flex: 1;
+    max-width: none;
+  }
+
+  .card-top,
+  .card-middle,
+  .detail-section {
+    padding: 17px 15px;
+  }
+
+  .card-heading {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .card-heading h3 {
+    font-size: 18px;
+  }
+
+  .condition-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .condition-item {
+    padding: 10px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .detail-item.full {
+    grid-column: auto;
+  }
+
+  .card-bottom {
+    padding: 15px;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .card-bottom .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .check-grid,
+  .condition-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="#" id="homeLink">나에게 맞는 지원 찾기</a>
+    <span class="header-tag">청년 · 학생 지원 정보</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-label">MY SUPPORT FINDER</span>
+    <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
+    <p>
+      나이와 거주 지역, 학생 여부, 소득 구간을 입력하면
+      관련 지원 정책을 확인하고 자격 조건을 비교할 수 있습니다.
+    </p>
+    <div class="hero-features">
+      <span>공식 정책 정보</span>
+      <span>조건별 자격 비교</span>
+      <span>신청 기간 자동 판정</span>
+    </div>
+  </div>
+</section>
+
+<main class="container main">
+
+  <section class="panel" id="searchPanel">
+    <div class="section-heading">
+      <h2>나의 정보 입력</h2>
+      <p>입력한 정보는 이 브라우저에서 정책을 비교하는 데 사용됩니다.</p>
+    </div>
+
+    <form id="searchForm">
+      <div class="form-grid">
+
+        <div class="field">
+          <label for="age">
+            나이
+            <span class="required-note">필수 · 만 나이 기준</span>
+          </label>
+          <input
+            class="input"
+            type="number"
+            id="age"
+            min="0"
+            max="120"
+            step="1"
+            placeholder="예: 20"
+            required
+          >
+          <p class="field-help">
+            정책에 따라 출생연도나 신청일 기준 나이를 별도로 확인해야 할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="region">
+            거주 지역
+            <span class="required-note">필수</span>
+          </label>
+          <select class="select" id="region" required>
+            <option value="">시·도를 선택하세요</option>
+            <option value="서울특별시">서울특별시</option>
+            <option value="부산광역시">부산광역시</option>
+            <option value="대구광역시">대구광역시</option>
+            <option value="인천광역시">인천광역시</option>
+            <option value="광주광역시">광주광역시</option>
+            <option value="대전광역시">대전광역시</option>
+            <option value="울산광역시">울산광역시</option>
+            <option value="세종특별자치시">세종특별자치시</option>
+            <option value="경기도">경기도</option>
+            <option value="강원특별자치도">강원특별자치도</option>
+            <option value="충청북도">충청북도</option>
+            <option value="충청남도">충청남도</option>
+            <option value="전북특별자치도">전북특별자치도</option>
+            <option value="전라남도">전라남도</option>
+            <option value="경상북도">경상북도</option>
+            <option value="경상남도">경상남도</option>
+            <option value="제주특별자치도">제주특별자치도</option>
+          </select>
+          <p class="field-help">
+            시·군·구 단위의 거주 요건은 개별 공고에서 추가로 확인하세요.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="student">
+            학생 여부
+            <span class="required-note">필수</span>
+          </label>
+          <select class="select" id="student" required>
+            <option value="">선택하세요</option>
+            <option value="재학생">재학생</option>
+            <option value="비재학생">비재학생</option>
+          </select>
+          <p class="field-help">
+            재학생 여부만으로 대학생·고등학생 등의 학적을 구분할 수는 없습니다.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="income">소득 구간</label>
+          <select class="select" id="income">
+            <option value="">모름 / 입력하지 않음</option>
+            <option value="기초·차상위">기초생활수급자·차상위계층</option>
+            <option value="1~3구간">학자금 지원 1~3구간</option>
+            <option value="4~6구간">학자금 지원 4~6구간</option>
+            <option value="7~8구간">학자금 지원 7~8구간</option>
+            <option value="9구간 이상">학자금 지원 9구간 이상</option>
+          </select>
+          <p class="field-help">
+            학자금 지원 구간과 가구 소득 기준은 서로 다를 수 있으므로 구분해서 판단합니다.
+          </p>
+        </div>
+
+        <div class="field full">
+          <span class="field-title">관심 분야</span>
+          <div class="check-grid">
+            <label class="check-option">
+              <input type="checkbox" name="category" value="주거 지원">
+              주거 지원
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="category" value="장학금">
+              장학금
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="category" value="생활·복지 지원">
+              생활·복지 지원
+            </label>
+            <label class="check-option">
+              <input type="checkbox" name="category" value="취업 지원">
+              취업 지원
+            </label>
+          </div>
+          <p class="field-help">
+            여러 분야를 선택할 수 있습니다. 아무것도 선택하지 않으면 모든 분야를 검색합니다.
+          </p>
+        </div>
+
+        <div class="field full">
+          <label for="keyword">정책명 검색</label>
+          <input
+            class="input"
+            type="search"
+            id="keyword"
+            placeholder="예: 청년월세, 국가장학금"
+          >
+          <p class="field-help">
+            정책명과 지원 내용에 포함된 단어로 검색합니다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          지원 정책 검색하기
+        </button>
+        <button type="button" class="btn btn-secondary" id="resetButton">
+          조건 초기화
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section aria-labelledby="resultsTitle">
+    <div class="results-header">
+      <div>
+        <h2 id="resultsTitle">지원 정책 검색 결과</h2>
+        <p id="resultDescription" aria-live="polite">
+          정책 정보를 확인하려면 나의 정보를 입력해 주세요.
+        </p>
+      </div>
+
+      <div class="sort-wrap">
+        <label for="sortSelect">정렬 기준</label>
+        <select id="sortSelect">
+          <option value="match">조건 일치 우선</option>
+          <option value="open">신청 가능 우선</option>
+          <option value="category">지원 분야별</option>
+          <option value="name">정책명 가나다순</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="result-summary" id="resultSummary" hidden></div>
+
+    <div id="policyList" class="policy-list" aria-live="polite">
+      <div class="empty-state">
+        <h3>나에게 맞는 지원 정책을 찾아보세요.</h3>
+        <p>
+          나이, 거주 지역, 학생 여부를 입력하면 등록된 정책의 자격 조건과
+          신청 기간을 비교할 수 있습니다.
+        </p>
+        <button type="button" class="btn btn-primary" id="startButton">
+          정보 입력하기
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="notice" aria-labelledby="noticeTitle">
+    <h3 id="noticeTitle">정책 정보 이용 안내</h3>
+    <p>
+      이 서비스는 공개된 지원 정책 정보를 바탕으로 이용자에게 관련 정책을 안내합니다.
+      정보 확인일 이후 정책 내용이나 신청 기간이 변경될 수 있으며,
+      검색 결과만으로 최종 지원 자격이 확정되지는 않습니다.
+      신청 전 반드시 공식 안내 페이지에서 최신 공고와 세부 자격을 확인하세요.
+    </p>
+    <p>
+      '조건 일치'는 등록된 조건과 입력 정보가 일치한다는 의미이며,
+      최종 지원 대상자 선정을 보장하지 않습니다.
+      '추가 확인 필요'는 공식 자료의 세부 조건 또는 사용자의 정보가 충분하지 않은 경우입니다.
+    </p>
+    <p>
+      이 웹앱은 외부 서버에 사용자 정보를 전송하지 않습니다.
+      정책 데이터는 코드에 등록된 정보이므로 실시간으로 갱신되지 않습니다.
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    나에게 맞는 지원 찾기 · 공개된 정책 정보 기반 안내 서비스
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+/*
+============================================================
+1. 정책 데이터
+============================================================
+
+정책을 추가하거나 수정할 때는 아래 배열에 객체를 추가하면 됩니다.
+
+중요:
+- 날짜는 YYYY-MM-DD 형식으로 입력합니다.
+- 확인하지 못한 조건은 null 또는 '공식 자료에서 확인 필요'로 둡니다.
+- minAge, maxAge가 null이면 연령 제한이 없다고 단정하지 않습니다.
+- regionType은 'nationwide' 또는 'specific'입니다.
+- studentRequirement는 'any', '재학생', '비재학생' 중 하나입니다.
+- incomeType은 '학자금지원구간', '중위소득', 'none', 'unknown' 중 하나입니다.
+- incomeLimit은 해당 incomeType에 맞는 기준을 기록합니다.
+- 날짜가 정해지지 않은 정책은 startDate/endDate를 null로 둡니다.
+- sourceChecked는 실제로 공식 자료를 확인한 날짜입니다.
+
+주의:
+정책별 자격 조건은 복잡할 수 있습니다.
+이 배열은 핵심 조건을 비교하기 위한 데이터이며,
+모든 개별 심사 기준을 대신하지 않습니다.
+*/
+
+const policies = [
+
+  {
+    id: "national-scholarship-type1",
+
+    name: "국가장학금 Ⅰ유형(학생직접지원형)",
+
+    category: "장학금",
+
+    description:
+      "국내 대학 학부생의 등록금 부담을 줄이기 위해 학자금 지원 구간과 성적 기준 등을 심사하여 등록금을 지원하는 국가장학금입니다.",
+
+    benefit:
+      "학자금 지원 구간 등에 따라 등록금 필수경비 범위에서 차등 지원합니다. 구체적인 지원 금액은 해당 학기 공식 안내를 확인하세요.",
+
+    minAge: null,
+    maxAge: null,
+
+    ageNote:
+      "이 데이터에는 별도의 연령 제한을 등록하지 않았습니다. 다른 자격 요건은 공식 안내에서 확인하세요.",
+
+    regionType: "nationwide",
+    regions: [],
+
+    regionNote:
+      "전국의 지원 대상 국내 대학을 대상으로 합니다. 대학별 지원 가능 여부는 별도 확인이 필요합니다.",
+
+    studentRequirement: "재학생",
+
+    studentNote:
+      "국내 대학 학부 재학 또는 입학·복학 예정 여부가 중요합니다. 재학생 선택만으로 대학생 여부를 확인할 수 없으므로 학적을 추가 확인해야 합니다.",
+
+    incomeType: "학자금지원구간",
+
+    incomeLimit: {
+      max: 8
+    },
+
+    incomeNote:
+      "확인한 공식 지원 대상 안내에는 학자금 지원 8구간 이하가 명시되어 있습니다. 신청 학기별 최신 기준과 예외는 공식 안내에서 확인하세요.",
+
+    startDate: "2026-08-12",
+    endDate: "2026-09-09",
+
+    applicationType: "period",
+
+    periodNote:
+      "2026년 2학기 학생 신청 기간 기준입니다. 이후 추가 모집이나 다른 학기 신청 일정은 공식 공고를 확인하세요.",
+
+    applicationMethod:
+      "한국장학재단 홈페이지에서 온라인 신청합니다. 신청 후 필요한 가구원 정보 제공 동의와 서류 제출 여부를 확인해야 합니다.",
+
+    documents:
+      "신청 후 한국장학재단에서 서류 제출 대상 여부를 확인하세요. 가족관계 등 신청자 상황에 따라 추가 서류가 필요할 수 있습니다.",
+
+    url:
+      "https://www.kosaf.go.kr/ko/scholar.do?pg=scholarship05_12_01_01_01p",
+
+    sourceName: "한국장학재단",
+
+    sourceChecked: "2026-10-27",
+
+    dataNotes:
+      "공식 지원 대상 안내 및 2026년 2학기 신청 일정 확인. 신청 기간 종료 후 추가 모집 여부는 별도 확인 필요."
+  },
+
+  {
+    id: "youth-monthly-rent-2026",
+
+    name: "2026년 청년월세 지원",
+
+    category: "주거 지원",
+
+    description:
+      "경제적 어려움을 겪는 청년층의 주거비 부담을 줄이기 위해 월세를 지원하는 사업입니다.",
+
+    benefit:
+      "2026년 신규 신청 기준 월 최대 20만 원씩 최장 24개월간 지원합니다. 실제 지급액과 지원 기간은 개별 선정 및 세부 요건에 따라 달라질 수 있습니다.",
+
+    minAge: 19,
+    maxAge: 34,
+
+    ageNote:
+      "2026년 신규 신청 안내 기준 19~34세입니다. 공식 안내의 출생연도 기준도 함께 확인하세요.",
+
+    regionType: "nationwide",
+    regions: [],
+
+    regionNote:
+      "전국 사업입니다. 다만 부모와 별도 거주, 주택 보유 여부, 임대차 등 세부 조건을 확인해야 합니다.",
+
+    studentRequirement: "any",
+
+    studentNote:
+      "재학생 여부만으로 대상에서 제외하지 않습니다. 별도 거주 및 소득·재산 등 전체 자격 조건을 확인해야 합니다.",
+
+    incomeType: "중위소득",
+
+    incomeLimit: null,
+
+    incomeNote:
+      "공식 안내상 청년가구 기준 중위소득 60% 이하, 원가구 기준 중위소득 100% 이하 등의 소득 요건이 있습니다. 입력한 학자금 지원 구간으로는 이 요건을 직접 판정할 수 없습니다.",
+
+    startDate: "2026-03-30",
+    endDate: "2026-05-29",
+
+    applicationType: "period",
+
+    periodNote:
+      "2026년 신규 신청 기간은 3월 30일 09:00부터 5월 29일 16:00까지입니다. 이후 추가 모집 또는 다음 사업 일정은 공식 공고에서 확인하세요.",
+
+    applicationMethod:
+      "복지로 홈페이지에서 온라인 신청할 수 있습니다. 신청 가능 여부와 접수 방법은 최신 공식 공고를 확인하세요.",
+
+    documents:
+      "임대차계약 및 월세 납부 증빙 등 관련 서류가 필요할 수 있습니다. 정확한 제출 서류는 복지로의 해당 사업 안내와 신청 화면에서 확인하세요.",
+
+    url:
+      "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661",
+
+    sourceName: "복지로 · 국토교통부",
+
+    sourceChecked: "2026-10-27",
+
+    dataNotes:
+      "복지로의 2026년 사업 안내 및 신청 기간 확인. 학자금 지원 구간과 중위소득 기준은 직접 환산하지 않음."
+  }
+
+];
+
+
+/*
+============================================================
+2. 공통 상수 및 유틸리티
+============================================================
+*/
+
+const $ = (selector) => document.querySelector(selector);
+
+const STATUS = {
+  MATCH: "조건 일치",
+  MISMATCH: "조건 불일치",
+  UNKNOWN: "추가 확인 필요"
+};
+
+const PROVINCES = [
+  "서울특별시",
+  "부산광역시",
+  "대구광역시",
+  "인천광역시",
+  "광주광역시",
+  "대전광역시",
+  "울산광역시",
+  "세종특별자치시",
+  "경기도",
+  "강원특별자치도",
+  "충청북도",
+  "충청남도",
+  "전북특별자치도",
+  "전라남도",
+  "경상북도",
+  "경상남도",
+  "제주특별자치도"
+];
+
+const form = $("#searchForm");
+const policyList = $("#policyList");
+const resultDescription = $("#resultDescription");
+const resultSummary = $("#resultSummary");
+const sortSelect = $("#sortSelect");
+
+let lastSearch = null;
+
+
+/*
+============================================================
+3. 날짜 처리
+============================================================
+
+날짜 문자열을 YYYY-MM-DD 형식으로 관리합니다.
+날짜 비교에는 브라우저의 현재 현지 날짜를 사용합니다.
+*/
+
+function todayLocalISO() {
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function parseISODate(value) {
+  if (!value || typeof value !== "string") {
+    return null;
+  }
+
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if (!match) {
+    return null;
+  }
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+
+  const date = new Date(year, month - 1, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  return date;
+}
+
+function formatDate(value) {
+  if (!value) {
+    return "공식 공고 확인 필요";
+  }
+
+  const date = parseISODate(value);
+
+  if (!date) {
+    return "공식 자료에서 확인 필요";
+  }
+
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
+}
+
+function getApplicationStatus(policy) {
+  if (policy.applicationType === "always") {
+    return {
+      key: "always",
+      label: "상시 신청",
+      className: "status-always",
+      rank: 1,
+      detail: "상시 신청으로 등록된 정책입니다. 현재 접수 여부는 공식 사이트에서 확인하세요."
+    };
+  }
+
+  const start = parseISODate(policy.startDate);
+  const end = parseISODate(policy.endDate);
+  const today = parseISODate(todayLocalISO());
+
+  if (!start || !end || !today) {
+    return {
+      key: "unknown",
+      label: "신청 기간 확인 필요",
+      className: "status-unknown",
+      rank: 3,
+      detail: "신청 기간을 확정할 수 없습니다. 공식 공고에서 최신 일정을 확인하세요."
+    };
+  }
+
+  if (start > end) {
+    return {
+      key: "unknown",
+      label: "신청 기간 확인 필요",
+      className: "status-unknown",
+      rank: 3,
+      detail: "등록된 시작일과 마감일을 확인해야 합니다."
+    };
+  }
+
+  if (today < start) {
+    return {
+      key: "before",
+      label: "신청 기간 전",
+      className: "status-before",
+      rank: 2,
+      detail: "등록된 신청 시작일 이전입니다."
+    };
+  }
+
+  if (today > end) {
+    return {
+      key: "ended",
+      label: "신청 기간 종료",
+      className: "status-ended",
+      rank: 4,
+      detail: "등록된 신청 기간은 종료되었습니다. 추가 모집 여부를 공식 사이트에서 확인하세요."
+    };
+  }
+
+  return {
+    key: "open",
+    label: "신청 가능 기간",
+    className: "status-open",
+    rank: 0,
+    detail: "등록된 신청 기간에 해당합니다. 실제 접수 가능 여부는 공식 사이트에서 확인하세요."
+  };
+}
+
+
+/*
+============================================================
+4. 입력값 수집
+============================================================
+*/
+
+function getFormValues() {
+  const ageValue = $("#age").value.trim();
+
+  return {
+    age: ageValue === "" ? null : Number(ageValue),
+
+    region: $("#region").value,
+
+    student: $("#student").value,
+
+    income: $("#income").value,
+
+    categories: Array.from(
+      document.querySelectorAll('input[name="category"]:checked')
+    ).map(input => input.value),
+
+    keyword: $("#keyword").value.trim().toLocaleLowerCase("ko-KR")
+  };
+}
+
+function validateValues(values) {
+  if (
+    values.age === null ||
+    !Number.isInteger(values.age) ||
+    values.age < 0 ||
+    values.age > 120
+  ) {
+    return "나이를 0~120 사이의 정수로 입력해 주세요.";
+  }
+
+  if (!PROVINCES.includes(values.region)) {
+    return "거주 지역을 선택해 주세요.";
+  }
+
+  if (!["재학생", "비재학생"].includes(values.student)) {
+    return "학생 여부를 선택해 주세요.";
+  }
+
+  return null;
+}
+
+
+/*
+============================================================
+5. 자격 조건 비교
+============================================================
+
+반환값:
+- match: 조건 일치
+- mismatch: 조건 불일치
+- unknown: 추가 확인 필요
+- neutral: 해당 없음 또는 비교 불필요
+
+원칙:
+1. 하나라도 명확한 필수 조건 불일치가 있으면 전체는 불일치.
+2. 불일치는 없지만 확인할 정보가 부족하면 추가 확인 필요.
+3. 등록된 모든 필수 조건을 확인할 수 있을 때만 조건 일치.
+4. 단순 입력값만으로 정책의 모든 세부 자격을 확정하지 않습니다.
+*/
+
+function compareAge(policy, age) {
+  if (policy.minAge === null && policy.maxAge === null) {
+    return {
+      state: "neutral",
+      label: "추가 연령 조건 미등록",
+      detail: policy.ageNote || "연령 조건을 공식 자료에서 추가 확인하세요."
+    };
+  }
+
+  if (!Number.isFinite(age)) {
+    return {
+      state: "unknown",
+      label: "나이 확인 필요",
+      detail: "나이를 입력해야 비교할 수 있습니다."
+    };
+  }
+
+  if (
+    policy.minAge !== null &&
+    age < policy.minAge
+  ) {
+    return {
+      state: "mismatch",
+      label: "연령 조건 불일치",
+      detail: `최소 연령은 ${policy.minAge}세입니다.`
+    };
+  }
+
+  if (
+    policy.maxAge !== null &&
+    age > policy.maxAge
+  ) {
+    return {
+      state: "mismatch",
+      label: "연령 조건 불일치",
+      detail: `최대 연령은 ${policy.maxAge}세입니다.`
+    };
+  }
+
+  return {
+    state: "match",
+    label: "등록된 연령 범위 일치",
+    detail: `${policy.minAge}~${policy.maxAge}세 기준에 해당합니다. 신청 기준일은 공식 안내에서 확인하세요.`
+  };
+}
+
+function compareRegion(policy, region) {
+  if (policy.regionType === "nationwide") {
+    return {
+      state: "match",
+      label: "전국 대상",
+      detail: policy.regionNote || "전국 대상 정책입니다."
+    };
+  }
+
+  if (policy.regionType !== "specific") {
+    return {
+      state: "unknown",
+      label: "지역 조건 확인 필요",
+      detail: policy.regionNote || "공식 자료에서 확인 필요"
+    };
+  }
+
+  if (!Array.isArray(policy.regions) || policy.regions.length === 0) {
+    return {
+      state: "unknown",
+      label: "지역 조건 확인 필요",
+      detail: "특정 지역 정책으로 등록되어 있으나 대상 지역이 확인되지 않습니다."
+    };
+  }
+
+  if (policy.regions.includes(region)) {
+    return {
+      state: "match",
+      label: "지역 일치",
+      detail: `${region}이 등록된 지원 지역에 포함됩니다.`
+    };
+  }
+
+  return {
+    state: "mismatch",
+    label: "지역 조건 불일치",
+    detail: `등록된 대상 지역: ${policy.regions.join(", ")}`
+  };
+}
+
+function compareStudent(policy, student) {
+  if (policy.studentRequirement === "any") {
+    return {
+      state: "neutral",
+      label: "학생 여부 제한 없음",
+      detail: policy.studentNote || "학생 여부는 등록된 필수 조건이 아닙니다."
+    };
+  }
+
+  if (
+    !["재학생", "비재학생"].includes(policy.studentRequirement)
+  ) {
+    return {
+      state: "unknown",
+      label: "학적 확인 필요",
+      detail: policy.studentNote || "공식 자료에서 확인 필요"
+    };
+  }
+
+  if (student !== policy.studentRequirement) {
+    return {
+      state: "mismatch",
+      label: "학생 여부 불일치",
+      detail: `등록된 학생 조건: ${policy.studentRequirement}`
+    };
+  }
+
+  /*
+  '재학생'은 고등학생, 대학생 등을 모두 포함할 수 있습니다.
+  국가장학금처럼 대학 학적을 요구하는 정책은 단순히
+  재학생이라는 이유만으로 자격을 확정하지 않습니다.
+  */
+  if (
+    policy.id === "national-scholarship-type1"
+  ) {
+    return {
+      state: "unknown",
+      label: "학적 세부 확인 필요",
+      detail: "재학생 조건은 일치하지만 국내 대학 학부 재학 여부를 추가로 확인해야 합니다."
+    };
+  }
+
+  return {
+    state: "match",
+    label: "학생 여부 일치",
+    detail: `입력한 학생 여부가 등록된 조건(${policy.studentRequirement})과 일치합니다.`
+  };
+}
+
+function getIncomeBracketNumber(value) {
+  const map = {
+    "1~3구간": { min: 1, max: 3 },
+    "4~6구간": { min: 4, max: 6 },
+    "7~8구간": { min: 7, max: 8 },
+    "9구간 이상": { min: 9, max: Infinity }
+  };
+
+  return map[value] || null;
+}
+
+function compareIncome(policy, income) {
+  if (policy.incomeType === "none") {
+    return {
+      state: "neutral",
+      label: "소득 조건 없음",
+      detail: "등록된 핵심 자격 조건에 소득 구간 제한이 없습니다."
+    };
+  }
+
+  if (policy.incomeType === "unknown") {
+    return {
+      state: "unknown",
+      label: "소득 조건 확인 필요",
+      detail: policy.incomeNote || "공식 자료에서 확인 필요"
+    };
+  }
+
+  if (!income) {
+    return {
+      state: "unknown",
+      label: "소득 정보 미입력",
+      detail: "소득 정보가 입력되지 않았습니다. 공식 자료의 소득 기준을 확인하세요."
+    };
+  }
+
+  if (policy.incomeType === "학자금지원구간") {
+    if (income === "기초·차상위") {
+      return {
+        state: "match",
+        label: "소득 조건 일치",
+        detail: "기초·차상위 계층은 학자금 지원 구간 기준과 별도로 해당 자격 및 세부 기준을 확인해야 합니다."
+      };
+    }
+
+    const bracket = getIncomeBracketNumber(income);
+
+    if (!bracket || !policy.incomeLimit) {
+      return {
+        state: "unknown",
+        label: "소득 조건 확인 필요",
+        detail: policy.incomeNote || "공식 자료에서 확인 필요"
+      };
+    }
+
+    if (bracket.min > policy.incomeLimit.max) {
+      return {
+        state: "mismatch",
+        label: "등록된 소득 기준 초과",
+        detail: `등록 기준은 학자금 지원 ${policy.incomeLimit.max}구간 이하입니다.`
+      };
+    }
+
+    if (bracket.max <= policy.incomeLimit.max) {
+      return {
+        state: "match",
+        label: "등록된 소득 범위 일치",
+        detail: `입력한 학자금 지원 구간은 ${policy.incomeLimit.max}구간 이하 기준에 포함됩니다.`
+      };
+    }
+
+    return {
+      state: "unknown",
+      label: "소득 구간 추가 확인 필요",
+      detail: "입력한 소득 범위가 정책 기준의 경계에 걸쳐 있어 정확한 구간을 확인해야 합니다."
+    };
+  }
+
+  /*
+  학자금 지원 구간을 중위소득 비율로 직접 환산하지 않습니다.
+  두 기준은 산정 방법과 의미가 다를 수 있습니다.
+  */
+  if (policy.incomeType === "중위소득") {
+    return {
+      state: "unknown",
+      label: "가구 소득 추가 확인 필요",
+      detail: "입력한 학자금 지원 구간만으로 가구 중위소득 기준 충족 여부를 판정할 수 없습니다. 가구원 구성과 소득·재산 등 공식 심사 기준을 확인하세요."
+    };
+  }
+
+  return {
+    state: "unknown",
+    label: "소득 조건 확인 필요",
+    detail: "공식 자료에서 확인 필요"
+  };
+}
+
+function comparePolicy(policy, values) {
+  const conditions = {
+    age: compareAge(policy, values.age),
+    region: compareRegion(policy, values.region),
+    student: compareStudent(policy, values.student),
+    income: compareIncome(policy, values.income)
+  };
+
+  const states = Object.values(conditions).map(item => item.state);
+
+  let overall;
+
+  if (states.includes("mismatch")) {
+    overall = STATUS.MISMATCH;
+  } else if (states.includes("unknown")) {
+    overall = STATUS.UNKNOWN;
+  } else {
+    overall = STATUS.MATCH;
+  }
+
+  /*
+  전체 조건이 일치하더라도 정책의 세부 자격,
+  제출 서류, 성적, 가구원 조건 등은 별도 심사가 필요합니다.
+  */
+  return {
+    overall,
+    conditions
+  };
+}
+
+
+/*
+============================================================
+6. 정책 필터링
+============================================================
+*/
+
+function matchesKeyword(policy, keyword) {
+  if (!keyword) {
+    return true;
+  }
+
+  const searchable = [
+    policy.name,
+    policy.category,
+    policy.description,
+    policy.benefit,
+    policy.applicationMethod,
+    policy.sourceName
+  ].join(" ").toLocaleLowerCase("ko-KR");
+
+  return searchable.includes(keyword);
+}
+
+function filterPolicies(values) {
+  const results = [];
+
+  for (const policy of policies) {
+    if (
+      values.categories.length > 0 &&
+      !values.categories.includes(policy.category)
+    ) {
+      continue;
+    }
+
+    if (!matchesKeyword(policy, values.keyword)) {
+      continue;
+    }
+
+    const comparison = comparePolicy(policy, values);
+    const application = getApplicationStatus(policy);
+
+    results.push({
+      policy,
+      comparison,
+      application
+    });
+  }
+
+  return sortPolicies(results, sortSelect.value);
+}
+
+
+/*
+============================================================
+7. 정렬
+============================================================
+*/
+
+function sortPolicies(results, sortType) {
+  const copied = [...results];
+
+  const matchRank = {
+    [STATUS.MATCH]: 0,
+    [STATUS.UNKNOWN]: 1,
+    [STATUS.MISMATCH]: 2
+  };
+
+  copied.sort((a, b) => {
+    if (sortType === "match") {
+      const difference =
+        matchRank[a.comparison.overall] -
+        matchRank[b.comparison.overall];
+
+      if (difference !== 0) {
+        return difference;
+      }
+
+      return a.policy.name.localeCompare(b.policy.name, "ko");
+    }
+
+    if (sortType === "open") {
+      const difference =
+        a.application.rank - b.application.rank;
+
+      if (difference !== 0) {
+        return difference;
+      }
+
+      return (
+        matchRank[a.comparison.overall] -
+        matchRank[b.comparison.overall]
+      );
+    }
+
+    if (sortType === "category") {
+      const difference = a.policy.category.localeCompare(
+        b.policy.category,
+        "ko"
+      );
+
+      if (difference !== 0) {
+        return difference;
+      }
+
+      return a.policy.name.localeCompare(b.policy.name, "ko");
+    }
+
+    if (sortType === "name") {
+      return a.policy.name.localeCompare(b.policy.name, "ko");
+    }
+
+    return 0;
+  });
+
+  return copied;
+}
+
+
+/*
+============================================================
+8. HTML 출력 보안 및 표시 유틸리티
+============================================================
+*/
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+
+    return entities[char];
+  });
+}
+
+function safeURL(value) {
+  try {
+    const url = new URL(value);
+
+    if (
+      url.protocol === "https:" &&
+      url.hostname
+    ) {
+      return url.href;
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function stateLabel(state) {
+  const labels = {
+    match: "일치",
+    mismatch: "불일치",
+    unknown: "추가 확인",
+    neutral: "참고"
+  };
+
+  return labels[state] || "확인 필요";
+}
+
+function stateClass(state) {
+  const classes = {
+    match: "mini-match",
+    mismatch: "mini-mismatch",
+    unknown: "mini-unknown",
+    neutral: "mini-neutral"
+  };
+
+  return classes[state] || "mini-neutral";
+}
+
+function overallClass(overall) {
+  if (overall === STATUS.MATCH) {
+    return "match";
+  }
+
+  if (overall === STATUS.MISMATCH) {
+    return "mismatch";
+  }
+
+  return "unknown";
+}
+
+function overallExplanation(overall) {
+  if (overall === STATUS.MATCH) {
+    return "등록된 필수 비교 조건이 입력 정보와 일치합니다.";
+  }
+
+  if (overall === STATUS.MISMATCH) {
+    return "하나 이상의 비교 조건이 일치하지 않습니다.";
+  }
+
+  return "세부 자격이나 입력 정보가 충분하지 않아 추가 확인이 필요합니다.";
+}
+
+
+/*
+============================================================
+9. 정책 카드 생성
+============================================================
+*/
+
+function conditionItem(label, result) {
+  return `
+    <div class="condition-item">
+      <div class="condition-label">${escapeHTML(label)}</div>
+      <div class="condition-value">${escapeHTML(result.label)}</div>
+      <div class="condition-detail">${escapeHTML(result.detail)}</div>
+      <span class="mini-state ${stateClass(result.state)}">
+        ${escapeHTML(stateLabel(result.state))}
+      </span>
+    </div>
+  `;
+}
+
+function detailItem(label, value, full = false) {
+  return `
+    <div class="detail-item ${full ? "full" : ""}">
+      <div class="detail-label">${escapeHTML(label)}</div>
+      <div class="detail-value">${escapeHTML(value || "공식 자료에서 확인 필요")}</div>
+    </div>
+  `;
+}
+
+function createPolicyCard(result) {
+  const policy = result.policy;
+  const comparison = result.comparison;
+  const application = result.application;
+
+  const url = safeURL(policy.url);
+
+  const dateText =
+    policy.applicationType === "always"
+      ? "상시 신청"
+      : policy.startDate && policy.endDate
+        ? `${formatDate(policy.startDate)} ~ ${formatDate(policy.endDate)}`
+        : "공식 공고 확인 필요";
+
+  const officialLink = url
+    ? `
+      <a
+        class="btn btn-primary"
+        href="${escapeHTML(url)}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        공식 안내 페이지 확인
+      </a>
+    `
+    : `
+      <span class="btn btn-secondary" aria-disabled="true">
+        공식 링크 확인 필요
+      </span>
+    `;
+
+  const periodDetail =
+    application.detail +
+    (policy.periodNote ? "\n" + policy.periodNote : "");
+
+  const bannerExtra =
+    comparison.overall === STATUS.MATCH
+      ? "지원 자격에 부합할 가능성이 있습니다. 최종 선정은 공식 심사 결과에 따릅니다."
+      : comparison.overall === STATUS.MISMATCH
+        ? "현재 입력 정보 중 일치하지 않는 조건이 있습니다. 예외 조건이 있는지 공식 안내를 확인하세요."
+        : "확인되지 않은 조건이 남아 있습니다. 세부 자격을 공식 안내에서 확인하세요.";
+
+  return `
+    <article class="policy-card">
+
+      <div class="card-top">
+        <div class="card-heading">
+          <div>
+            <h3>${escapeHTML(policy.name)}</h3>
+            <span class="category-tag">${escapeHTML(policy.category)}</span>
+          </div>
+
+          <span class="status-badge ${application.className}">
+            ${escapeHTML(application.label)}
+          </span>
+        </div>
+
+        <p class="card-description">
+          ${escapeHTML(policy.description)}
+        </p>
+      </div>
+
+      <div class="card-middle">
+
+        <h4 class="eligibility-title">나의 조건과 비교한 결과</h4>
+
+        <div class="match-banner ${overallClass(comparison.overall)}">
+          ${escapeHTML(comparison.overall)}
+          <small>
+            ${escapeHTML(overallExplanation(comparison.overall))}
+            ${escapeHTML(bannerExtra)}
+          </small>
+        </div>
+
+        <div class="condition-grid">
+          ${conditionItem("연령", comparison.conditions.age)}
+          ${conditionItem("거주 지역", comparison.conditions.region)}
+          ${conditionItem("학생 여부", comparison.conditions.student)}
+          ${conditionItem("소득", comparison.conditions.income)}
+        </div>
+
+      </div>
+
+      <div class="detail-section">
+        <h4>지원 및 신청 정보</h4>
+
+        <div class="detail-grid">
+          ${detailItem("지원 내용", policy.benefit, true)}
+
+          ${detailItem("신청 기간", dateText)}
+
+          <div class="detail-item">
+            <div class="detail-label">현재 신청 상태</div>
+            <div class="detail-value">
+              <span class="status-badge ${application.className}">
+                ${escapeHTML(application.label)}
+              </span>
+              <div class="condition-detail">
+                ${escapeHTML(periodDetail)}
+              </div>
+            </div>
+          </div>
+
+          ${detailItem("신청 자격", [
+            policy.ageNote,
+            policy.regionNote,
+            policy.studentNote,
+            policy.incomeNote
+          ].filter(Boolean).join("\n\n"), true)}
+
+          ${detailItem("신청 방법", policy.applicationMethod, true)}
+
+          ${detailItem("필요 서류", policy.documents, true)}
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>정보 출처 및 확인일</h4>
+
+        <div class="source-line">
+          출처: ${escapeHTML(policy.sourceName)}
+          <br>
+          정보 확인일: ${escapeHTML(policy.sourceChecked || "확인일 미등록")}
+          <br>
+          데이터 참고: ${escapeHTML(policy.dataNotes || "추가 확인 필요")}
+          <br>
+          ${url
+            ? `공식 주소: <a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(url)}</a>`
+            : "공식 주소: 확인 필요"}
+        </div>
+      </div>
+
+      <div class="card-bottom">
+        <span class="last-checked">
+          정보 확인일: ${escapeHTML(policy.sourceChecked || "미등록")}
+        </span>
+        ${officialLink}
+      </div>
+
+    </article>
+  `;
+}
+
+
+/*
+============================================================
+10. 검색 결과 렌더링
+============================================================
+*/
+
+function renderSummary(results) {
+  const total = results.length;
+
+  const matchCount = results.filter(
+    item => item.comparison.overall === STATUS.MATCH
+  ).length;
+
+  const mismatchCount = results.filter(
+    item => item.comparison.overall === STATUS.MISMATCH
+  ).length;
+
+  const unknownCount = results.filter(
+    item => item.comparison.overall === STATUS.UNKNOWN
+  ).length;
+
+  const openCount = results.filter(
+    item => item.application.key === "open" ||
+            item.application.key === "always"
+  ).length;
+
+  resultSummary.hidden = false;
+
+  resultSummary.innerHTML = `
+    <span class="summary-chip">
+      검색 결과 <strong>${total}</strong>건
+    </span>
+    <span class="summary-chip">
+      조건 일치 <strong>${matchCount}</strong>건
+    </span>
+    <span class="summary-chip">
+      추가 확인 <strong>${unknownCount}</strong>건
+    </span>
+    <span class="summary-chip">
+      조건 불일치 <strong>${mismatchCount}</strong>건
+    </span>
+    <span class="summary-chip">
+      신청 가능 상태 <strong>${openCount}</strong>건
+    </span>
+  `;
+}
+
+function renderEmptyState(message, showReset = false) {
+  resultSummary.hidden = true;
+
+  policyList.innerHTML = `
+    <div class="empty-state">
+      <h3>검색 결과가 없습니다.</h3>
+      <p>${escapeHTML(message)}</p>
+      ${showReset
+        ? `<button type="button" class="btn btn-secondary" id="emptyResetButton">검색 조건 초기화</button>`
+        : ""}
+    </div>
+  `;
+
+  const emptyResetButton = $("#emptyResetButton");
+
+  if (emptyResetButton) {
+    emptyResetButton.addEventListener("click", resetForm);
+  }
+}
+
+function renderResults(results) {
+  if (results.length === 0) {
+    renderEmptyState(
+      "현재 입력한 조건과 일치하는 정책을 찾지 못했습니다. 조건을 변경하거나 공식 사이트에서 추가로 확인해 보세요.",
+      true
+    );
+
+    resultDescription.textContent =
+      "검색 조건에 해당하는 정책이 없습니다.";
+
+    return;
+  }
+
+  renderSummary(results);
+
+  resultDescription.textContent =
+    `등록된 정책 ${policies.length}건 중 ${results.length}건을 표시합니다.`;
+
+  policyList.innerHTML = results.map(createPolicyCard).join("");
+}
+
+
+/*
+============================================================
+11. 검색 실행
+============================================================
+*/
+
+function runSearch(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
+  const values = getFormValues();
+  const validationError = validateValues(values);
+
+  if (validationError) {
+    alert(validationError);
+
+    if (
+      values.age === null ||
+      !Number.isInteger(values.age) ||
+      values.age < 0 ||
+      values.age > 120
+    ) {
+      $("#age").focus();
+    } else if (!values.region) {
+      $("#region").focus();
+    } else {
+      $("#student").focus();
+    }
+
+    return;
+  }
+
+  lastSearch = values;
+
+  const results = filterPolicies(values);
+
+  renderResults(results);
+}
+
+
+/*
+============================================================
+12. 초기화
+============================================================
+*/
+
+function resetForm() {
+  form.reset();
+
+  sortSelect.value = "match";
+  lastSearch = null;
+
+  resultSummary.hidden = true;
+
+  resultDescription.textContent =
+    "정책 정보를 확인하려면 나의 정보를 입력해 주세요.";
+
+  policyList.innerHTML = `
+    <div class="empty-state">
+      <h3>나에게 맞는 지원 정책을 찾아보세요.</h3>
+      <p>
+        나이, 거주 지역, 학생 여부를 입력하면 등록된 정책의 자격 조건과
+        신청 기간을 비교할 수 있습니다.
+      </p>
+      <button type="button" class="btn btn-primary" id="startButton">
+        정보 입력하기
+      </button>
+    </div>
+  `;
+
+  bindStartButton();
+}
+
+function bindStartButton() {
+  const startButton = $("#startButton");
+
+  if (startButton) {
+    startButton.addEventListener("click", () => {
+      $("#searchPanel").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      $("#age").focus({ preventScroll: true });
+    });
+  }
+}
+
+
+/*
+============================================================
+13. 이벤트 연결
+============================================================
+*/
+
+form.addEventListener("submit", runSearch);
+
+$("#resetButton").addEventListener("click", resetForm);
+
+sortSelect.addEventListener("change", () => {
+  if (!lastSearch) {
+    return;
+  }
+
+  const results = filterPolicies(lastSearch);
+  renderResults(results);
+});
+
+$("#homeLink").addEventListener("click", event => {
+  event.preventDefault();
+
+  resetForm();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+bindStartButton();
+
+
+/*
+============================================================
+14. 개발자용 데이터 검사
+============================================================
+
+잘못된 날짜나 필수 데이터 누락을 콘솔에서 확인할 수 있습니다.
+실제 정책 자격을 자동 검증하는 기능은 아닙니다.
+*/
+
+function validatePolicyData() {
+  const ids = new Set();
+
+  for (const policy of policies) {
+    if (ids.has(policy.id)) {
+      console.warn("중복 정책 ID:", policy.id);
+    }
+
+    ids.add(policy.id);
+
+    if (!policy.name || !policy.category) {
+      console.warn("정책명 또는 분야 누락:", policy);
+    }
+
+    if (policy.url && !safeURL(policy.url)) {
+      console.warn("공식 URL 형식 확인 필요:", policy.name);
+    }
+
+    if (policy.startDate && !parseISODate(policy.startDate)) {
+      console.warn("시작일 형식 확인 필요:", policy.name);
+    }
+
+    if (policy.endDate && !parseISODate(policy.endDate)) {
+      console.warn("마감일 형식 확인 필요:", policy.name);
+    }
+
+    if (
+      policy.startDate &&
+      policy.endDate &&
+      parseISODate(policy.startDate) &&
+      parseISODate(policy.endDate) &&
+      parseISODate(policy.startDate) > parseISODate(policy.endDate)
+    ) {
+      console.warn("신청 기간 순서 확인 필요:", policy.name);
+    }
+  }
+}
+
+validatePolicyData();
+
+</script>
+
+</body>
+</html>
