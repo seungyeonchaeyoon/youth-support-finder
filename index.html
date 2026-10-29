@@ -720,6 +720,9 @@ a:focus-visible {
   background: white;
 }
 
+/* 신청 일정 달력 */
+.calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.calendar-month{margin:0;color:var(--navy);font-size:19px}.calendar-nav{display:flex;gap:8px}.calendar-nav button{border:1px solid var(--border);background:white;color:var(--navy);border-radius:8px;min-width:38px;min-height:38px;cursor:pointer}.calendar-legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;margin-bottom:12px}.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.legend-start{background:#3978c5}.legend-end{background:#c44747}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--border);border-left:1px solid var(--border)}.calendar-weekday,.calendar-day{min-width:0;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.calendar-weekday{text-align:center;padding:8px 2px;background:#f5f8fc;color:var(--muted);font-size:12px;font-weight:750}.calendar-day{min-height:92px;padding:6px;background:white}.calendar-day.is-today{background:#f0f7ff}.calendar-day.is-empty{background:#f8fafc}.calendar-date{font-size:12px;font-weight:800;color:var(--text)}.calendar-event{display:block;margin-top:4px;padding:3px 4px;border-radius:4px;font-size:10px;line-height:1.35;overflow-wrap:anywhere}.calendar-event.start{background:#eaf3ff;color:#24568c}.calendar-event.end{background:#ffeded;color:#a52f2f}.calendar-help{margin:12px 0 0;font-size:12px;color:var(--muted)}.deadline-alert{display:inline-block;margin-top:9px;padding:5px 9px;border-radius:6px;background:var(--red-bg);color:var(--red);font-size:12px;font-weight:800}.policy-card.deadline-soon{border:2px solid #d85a5a}@media(max-width:650px){.calendar-day{min-height:68px;padding:4px 2px}.calendar-event{font-size:9px;padding:3px 2px}.calendar-date{font-size:11px}}
+
 /* 반응형 */
 @media (max-width: 650px) {
   .container {
@@ -861,6 +864,25 @@ a:focus-visible {
 </section>
 
 <main class="container main">
+
+  <section class="panel" id="calendarPanel">
+    <div class="section-heading">
+      <h2>정책 신청 일정 달력</h2>
+      <p>등록된 정책의 모집 시작일과 마감일을 확인하고, 마감이 임박한 정책을 놓치지 않도록 확인하세요.</p>
+    </div>
+    <div class="calendar-toolbar">
+      <h3 class="calendar-month" id="calendarMonth" aria-live="polite"></h3>
+      <div class="calendar-nav">
+        <button type="button" id="calendarPrev" aria-label="이전 달">이전</button>
+        <button type="button" id="calendarToday">이번 달</button>
+        <button type="button" id="calendarNext" aria-label="다음 달">다음</button>
+      </div>
+    </div>
+    <div class="calendar-legend"><span><i class="legend-dot legend-start"></i>모집 시작</span><span><i class="legend-dot legend-end"></i>신청 마감</span></div>
+    <div class="calendar-grid" id="calendarGrid" aria-label="정책 신청 일정 달력"></div>
+    <p class="calendar-help">달력은 코드에 등록된 날짜를 표시합니다. 일정이 확인되지 않은 정책은 달력에 표시되지 않으므로 공식 공고를 확인하세요.</p>
+    <div id="calendarEvents" aria-live="polite"></div>
+  </section>
 
   <section class="panel" id="searchPanel">
     <div class="section-heading">
@@ -1264,6 +1286,8 @@ const resultSummary = $("#resultSummary");
 const sortSelect = $("#sortSelect");
 
 let lastSearch = null;
+let calendarCursor = new Date();
+calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth(), 1);
 
 
 /*
@@ -1325,6 +1349,42 @@ function formatDate(value) {
   }
 
   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
+}
+
+function getDeadlineInfo(policy) {
+  if (policy.applicationType === "always") return null;
+  const end = parseISODate(policy.endDate), start = parseISODate(policy.startDate), today = parseISODate(todayLocalISO());
+  if (!start || !end || !today || start > end || end < today || start > today) return null;
+  const daysLeft = Math.round((end - today) / 86400000);
+  return daysLeft <= 7 ? daysLeft : null;
+}
+
+function renderCalendar() {
+  const grid=$("#calendarGrid"), monthLabel=$("#calendarMonth"), eventsBox=$("#calendarEvents");
+  if (!grid || !monthLabel || !eventsBox) return;
+  const year=calendarCursor.getFullYear(), month=calendarCursor.getMonth();
+  monthLabel.textContent=`${year}년 ${month+1}월`;
+  const first=new Date(year,month,1).getDay(), total=new Date(year,month+1,0).getDate(), today=todayLocalISO();
+  let html=["일","월","화","수","목","금","토"].map(d=>`<div class="calendar-weekday">${d}</div>`).join("");
+  for(let i=0;i<first;i++) html+='<div class="calendar-day is-empty" aria-hidden="true"></div>';
+  const byDate={};
+  for(const policy of policies){
+    if(policy.applicationType==="always") continue;
+    for(const [field,kind,label] of [["startDate","start","모집 시작"],["endDate","end","신청 마감"]]){
+      const date=policy[field];
+      if(!parseISODate(date)||!date.startsWith(`${year}-${String(month+1).padStart(2,"0")}-`)) continue;
+      (byDate[date] ||= []).push({name:policy.name,kind,label});
+    }
+  }
+  for(let day=1;day<=total;day++){
+    const date=`${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+    const events=(byDate[date]||[]).map(e=>`<span class="calendar-event ${e.kind}" title="${escapeHTML(e.name)}: ${e.label}">${e.kind==="start"?"시작":"마감"} · ${escapeHTML(e.name)}</span>`).join("");
+    html+=`<div class="calendar-day${date===today?" is-today":""}"><div class="calendar-date">${day}</div>${events}</div>`;
+  }
+  for(let i=0,n=(7-((first+total)%7))%7;i<n;i++) html+='<div class="calendar-day is-empty" aria-hidden="true"></div>';
+  grid.innerHTML=html;
+  const entries=Object.entries(byDate).sort(([a],[b])=>a.localeCompare(b));
+  eventsBox.innerHTML=entries.length?'<h3 class="eligibility-title" style="margin-top:18px">이번 달 일정</h3>'+entries.map(([date,events])=>`<div class="condition-item" style="margin-top:8px"><strong>${formatDate(date)}</strong><div class="condition-detail">${events.map(e=>`${e.label}: ${escapeHTML(e.name)}`).join("<br>")}</div></div>`).join(""):'<p class="calendar-help">이번 달에 등록된 모집 시작일이나 마감일이 없습니다.</p>';
 }
 
 function getApplicationStatus(policy) {
@@ -1957,6 +2017,8 @@ function createPolicyCard(result) {
   const application = result.application;
 
   const url = safeURL(policy.url);
+  const daysUntilDeadline = getDeadlineInfo(policy);
+  const deadlineSoon = daysUntilDeadline !== null;
 
   const dateText =
     policy.applicationType === "always"
@@ -1994,7 +2056,7 @@ function createPolicyCard(result) {
         : "확인되지 않은 조건이 남아 있습니다. 세부 자격을 공식 안내에서 확인하세요.";
 
   return `
-    <article class="policy-card">
+    <article class="policy-card ${deadlineSoon ? "deadline-soon" : ""}">
 
       <div class="card-top">
         <div class="card-heading">
@@ -2008,6 +2070,7 @@ function createPolicyCard(result) {
           </span>
         </div>
 
+        ${deadlineSoon ? `<div class="deadline-alert">${daysUntilDeadline === 0 ? "오늘 마감" : `마감 ${daysUntilDeadline}일 전`} · 신청 기간을 확인하세요</div>` : ""}
         <p class="card-description">
           ${escapeHTML(policy.description)}
         </p>
@@ -2181,6 +2244,7 @@ function renderResults(results) {
     `등록된 정책 ${policies.length}건 중 ${results.length}건을 표시합니다.`;
 
   policyList.innerHTML = results.map(createPolicyCard).join("");
+  renderCalendar();
 }
 
 
@@ -2282,6 +2346,10 @@ function bindStartButton() {
 
 form.addEventListener("submit", runSearch);
 
+$("#calendarPrev").addEventListener("click", () => { calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth()-1, 1); renderCalendar(); });
+$("#calendarNext").addEventListener("click", () => { calendarCursor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth()+1, 1); renderCalendar(); });
+$("#calendarToday").addEventListener("click", () => { const now = new Date(); calendarCursor = new Date(now.getFullYear(), now.getMonth(), 1); renderCalendar(); });
+
 $("#resetButton").addEventListener("click", resetForm);
 
 sortSelect.addEventListener("change", () => {
@@ -2354,6 +2422,7 @@ function validatePolicyData() {
   }
 }
 
+renderCalendar();
 validatePolicyData();
 
 </script>
