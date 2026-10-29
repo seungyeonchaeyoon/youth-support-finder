@@ -852,7 +852,7 @@ a:focus-visible {
     <span class="hero-label">MY SUPPORT FINDER</span>
     <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
     <p>
-      나이와 거주 지역, 학생 여부, 소득 구간을 입력하면
+      나이와 거주 지역, 학생 여부, 소득 구간 및 수급 자격을 입력하면
       관련 지원 정책을 확인하고 자격 조건을 비교할 수 있습니다.
     </p>
     <div class="hero-features">
@@ -973,6 +973,29 @@ a:focus-visible {
           </p>
         </div>
 
+        <div class="field">
+          <label for="welfareStatus">기초생활수급·차상위 등 자격</label>
+          <select class="select" id="welfareStatus">
+            <option value="모름">모름 / 확인하지 않음</option>
+            <option value="기초생활수급자">기초생활수급자</option>
+            <option value="차상위계층">차상위계층</option>
+            <option value="한부모가족 지원대상자">한부모가족 지원대상자</option>
+            <option value="해당 없음">해당 없음</option>
+          </select>
+          <p class="field-help">정책에 따라 기초생활수급자, 차상위계층, 한부모가족 지원대상자 등 자격이 다르게 적용됩니다.</p>
+        </div>
+
+        <div class="field">
+          <span class="field-title">현재 받고 있는 급여 유형</span>
+          <div class="check-grid">
+            <label class="check-option"><input type="checkbox" name="benefitType" value="생계급여">생계급여</label>
+            <label class="check-option"><input type="checkbox" name="benefitType" value="의료급여">의료급여</label>
+            <label class="check-option"><input type="checkbox" name="benefitType" value="주거급여">주거급여</label>
+            <label class="check-option"><input type="checkbox" name="benefitType" value="교육급여">교육급여</label>
+          </div>
+          <p class="field-help">기초생활수급자가 아닌 경우 비워 두세요. 급여 유형을 모르면 선택하지 않고 공식 안내에서 확인할 수 있습니다.</p>
+        </div>
+
         <div class="field full">
           <span class="field-title">관심 분야</span>
           <div class="check-grid">
@@ -1050,7 +1073,7 @@ a:focus-visible {
       <div class="empty-state">
         <h3>나에게 맞는 지원 정책을 찾아보세요.</h3>
         <p>
-          나이, 거주 지역, 학생 여부를 입력하면 등록된 정책의 자격 조건과
+          나이, 거주 지역, 학생 여부, 수급 자격을 입력하면 등록된 정책의 자격 조건과
           신청 기간을 비교할 수 있습니다.
         </p>
         <button type="button" class="btn btn-primary" id="startButton">
@@ -1241,7 +1264,224 @@ const policies = [
     dataNotes:
       "복지로의 2026년 사업 안내 및 신청 기간 확인. 학자금 지원 구간과 중위소득 기준은 직접 환산하지 않음."
   }
+,
 
+  {
+    "id": "culture-nuri-2026",
+    "name": "2026 문화누리카드",
+    "category": "생활·복지 지원",
+    "description": "기초생활수급자와 차상위계층의 문화예술·국내 여행·체육 활동을 지원하는 카드입니다.",
+    "benefit": "1인당 연 15만 원을 지원하며, 2026년 청소년기(13~18세)는 생애주기별 1만 원 추가 지원 대상입니다. 예산 소진 여부는 공식 안내에서 확인하세요.",
+    "minAge": 6,
+    "maxAge": 120,
+    "ageNote": "2026년 기준 6세 이상 대상이며, 청소년 추가 지원은 13~18세입니다.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국 사업입니다. 카드 발급 가능 여부와 예산 잔액을 확인하세요.",
+    "studentRequirement": "any",
+    "studentNote": "학생 여부와 관계없이 연령 및 수급 자격 기준을 확인합니다.",
+    "incomeType": "none",
+    "incomeLimit": null,
+    "incomeNote": "기초생활수급자 또는 차상위계층 자격을 확인합니다.",
+    "startDate": "2026-02-02",
+    "endDate": "2026-11-30",
+    "applicationType": "period",
+    "periodNote": "2026년 발급 기간은 2월 2일부터 11월 30일까지입니다. 예산 소진 시 조기 마감될 수 있습니다.",
+    "applicationMethod": "주민센터 방문, 문화누리카드 누리집 또는 모바일 앱을 통해 신청합니다. 최신 안내를 확인하세요.",
+    "documents": "발급 자격 및 본인 확인에 필요한 사항은 공식 신청 안내에서 확인하세요.",
+    "url": "https://www.mnuri.kr/munhwa/cardIssueGuide.do",
+    "sourceName": "문화누리카드 공식 누리집",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 대상, 지원 금액, 청소년 추가 지원 및 발급 기간을 공식 안내에서 확인. 예산 소진 여부는 별도 확인 필요.",
+    "welfareRequirement": "basic-or-near-poverty",
+    "welfareExtraNote": "카드 발급 가능 여부와 예산 소진 여부를 공식 사이트에서 최종 확인하세요."
+  },
+
+  {
+    "id": "energy-voucher-2026",
+    "name": "2026 에너지바우처",
+    "category": "생활·복지 지원",
+    "description": "에너지 취약계층이 전기·도시가스·지역난방·등유·LPG·연탄 등을 이용할 수 있도록 지원하는 이용권입니다.",
+    "benefit": "2026년 세대원 수에 따라 세대당 총 295,200원~701,300원을 지원합니다. 월별 금액이 아니며 세대 특성 및 중복 지원 여부에 따라 달라질 수 있습니다.",
+    "minAge": null,
+    "maxAge": null,
+    "ageNote": "수급자 본인 또는 주민등록표상 세대원이 노인·영유아·장애인·임산부·중증질환자·한부모가족·소년소녀가정·다자녀 세대 등 세대원 특성 기준 중 하나를 충족해야 합니다.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국 사업이며 관할 행정복지센터 또는 복지로를 통해 신청합니다.",
+    "studentRequirement": "any",
+    "studentNote": "학생 여부보다 수급 자격과 세대원 특성 기준이 중요합니다.",
+    "incomeType": "none",
+    "incomeLimit": null,
+    "incomeNote": "생계·의료·주거·교육급여 수급 자격과 세대원 특성 기준을 모두 충족해야 합니다.",
+    "startDate": "2026-06-15",
+    "endDate": "2026-12-31",
+    "applicationType": "period",
+    "periodNote": "2026년 신청 기간은 6월 15일~12월 31일이며 사용 기간은 2026년 7월 1일~2027년 5월 31일입니다.",
+    "applicationMethod": "주민등록상 거주지 읍·면·동 행정복지센터 방문 또는 복지로 온라인 신청. 자동신청·재신청 여부를 확인하세요.",
+    "documents": "신청서가 필요하며, 요금차감 신청은 최근 에너지 요금고지서 등이 필요할 수 있습니다. 대리 신청 서류는 공식 안내를 확인하세요.",
+    "url": "https://www.energyv.or.kr/info/apl_info.do",
+    "sourceName": "한국에너지공단 에너지바우처",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 지원 자격, 금액, 신청·사용 기간을 공식 안내에서 확인. 세대원 특성 기준과 중복지원 제한은 별도 심사 대상.",
+    "welfareRequirement": "basic-energy",
+    "welfareExtraNote": "수급 자격 외에도 세대원 특성 기준을 충족해야 하므로 이 결과만으로 대상 여부를 확정할 수 없습니다."
+  },
+
+  {
+    "id": "student-education-info-2026",
+    "name": "초·중·고 학생 교육정보화 지원",
+    "category": "생활·복지 지원",
+    "description": "저소득층 가구의 초·중·고 학생에게 PC 또는 인터넷 통신비 등을 지원해 교육정보 격차를 줄이는 사업입니다.",
+    "benefit": "교육청 기준에 따라 PC 또는 인터넷 통신비 등을 지원합니다. 지원 항목·학년·중복지원 제한은 시·도교육청별로 다를 수 있습니다.",
+    "minAge": null,
+    "maxAge": null,
+    "ageNote": "초·중·고등학생 대상입니다. 나이만으로 대상 여부를 확정할 수 없으며 학교급과 교육청 기준을 확인해야 합니다.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국적으로 운영되지만 지원 항목과 세부 기준은 시·도교육청별로 다릅니다.",
+    "studentRequirement": "재학생",
+    "studentNote": "초·중·고등학교 재학생 대상이며 대학생은 일반적인 대상이 아닙니다.",
+    "incomeType": "none",
+    "incomeLimit": null,
+    "incomeNote": "기초생활수급자(생계·의료·주거·교육급여), 법정 차상위 등 저소득층 자격을 확인합니다.",
+    "startDate": null,
+    "endDate": null,
+    "applicationType": "unknown",
+    "periodNote": "신청 시기는 교육청별로 다를 수 있습니다. 거주지 교육청과 복지로에서 해당 연도 공고를 확인하세요.",
+    "applicationMethod": "복지로 또는 관할 시·도교육청의 안내에 따라 신청합니다.",
+    "documents": "가구의 수급 자격, 학생 학적 및 교육청별 제출 서류를 확인하세요.",
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003227",
+    "sourceName": "복지로 · 교육부",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 중앙 복지서비스 안내 확인. 대상·학년·중복지원 기준은 시·도교육청별로 달라질 수 있음.",
+    "welfareRequirement": "basic-or-near-poverty",
+    "welfareExtraNote": "초·중·고 재학 여부, 교육청별 대상 학년·지원 항목 및 중복지원 기준을 추가 확인하세요."
+  },
+
+  {
+    "id": "dream-ladder-scholarship-2026",
+    "name": "복권기금 꿈사다리 장학사업",
+    "category": "장학금",
+    "description": "저소득층 우수 초·중·고 학생을 발굴해 대학까지 이어지는 교육 기회를 지원하는 장학사업입니다.",
+    "benefit": "장학금과 교육 관련 지원을 제공합니다. 유형별 지원 내용과 선발 규모는 해당 연도 한국장학재단 공고에서 확인하세요.",
+    "minAge": 0,
+    "maxAge": 24,
+    "ageNote": "2026년 안내 기준 만 24세 이하이며 국내 초등학교 5학년부터 고등학교 3학년까지 재학생이 대상입니다.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국 사업이며 학교 추천 및 한국장학재단의 해당 연도 선발 절차를 확인해야 합니다.",
+    "studentRequirement": "재학생",
+    "studentNote": "국내 초·중·고 재학생 중 초5~고3 대상입니다. 학교 추천, 성적·출결 등 유형별 요건이 추가됩니다.",
+    "incomeType": "none",
+    "incomeLimit": null,
+    "incomeNote": "기초생활수급자, 법정 차상위계층 또는 한부모가족 지원대상자 등 기본 요건을 확인합니다.",
+    "startDate": null,
+    "endDate": null,
+    "applicationType": "unknown",
+    "periodNote": "2026년 신청 일정은 이 데이터에 등록하지 않았습니다. 해당 연도 공고 및 학교 추천 일정을 확인하세요.",
+    "applicationMethod": "학교 추천 및 한국장학재단의 해당 연도 공고에 따른 절차를 확인하세요.",
+    "documents": "학교 추천, 학적·성적·출결 및 수급 자격 관련 제출 요건을 공식 공고에서 확인하세요.",
+    "url": "https://www.kosaf.go.kr/",
+    "sourceName": "한국장학재단 · 복지로",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "복지로의 2026년 사업 안내 확인. 신청 기간과 유형별 상세 선발 기준은 최신 공고에서 추가 확인 필요.",
+    "welfareRequirement": "basic-or-near-or-single-parent",
+    "welfareExtraNote": "학교급·학년, 학교 추천, 성적·출결 및 유형별 기준을 충족해야 하므로 추가 확인이 필요합니다."
+  },
+
+  {
+    "id": "hope-savings-account-1-2026",
+    "name": "희망저축계좌Ⅰ",
+    "category": "생활·복지 지원",
+    "description": "일하는 생계·의료급여 수급 가구의 자산 형성을 지원하는 사업입니다.",
+    "benefit": "근로·사업소득과 가구 소득인정액 등 요건을 충족하면 자산 형성을 위한 지원을 받을 수 있습니다. 구체적인 적립·지원 금액은 해당 연도 공고를 확인하세요.",
+    "minAge": null,
+    "maxAge": null,
+    "ageNote": "가구 및 근로 요건을 확인하세요.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국 사업입니다. 세부 요건과 모집 일정은 거주지 행정복지센터에서 확인하세요.",
+    "studentRequirement": "any",
+    "studentNote": "학생 여부보다 가구의 수급 유형과 근로·사업소득 요건이 중요합니다.",
+    "incomeType": "unknown",
+    "incomeLimit": null,
+    "incomeNote": "소득인정액과 근로·사업소득 기준을 함께 심사합니다. 학자금 지원 구간만으로 판정할 수 없습니다.",
+    "startDate": null,
+    "endDate": null,
+    "applicationType": "unknown",
+    "periodNote": "신청 일정은 지자체·모집 회차에 따라 달라질 수 있으므로 거주지 행정복지센터에 확인하세요.",
+    "applicationMethod": "주소지 관할 읍·면·동 행정복지센터에서 신청합니다. 모집 일정 및 접수 가능 여부를 먼저 확인하세요.",
+    "documents": "수급 자격, 근로·사업소득 및 가구 관련 서류는 관할 행정복지센터 안내를 확인하세요.",
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000100",
+    "sourceName": "복지로 · 보건복지부",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 복지로 안내 확인. 근로 요건과 모집 일정은 개별 확인 필요.",
+    "welfareRequirement": "basic-living-medical",
+    "welfareExtraNote": "가구 소득인정액과 근로·사업소득 요건을 별도로 심사하므로 수급 유형만으로 자격이 확정되지 않습니다."
+  },
+
+  {
+    "id": "hope-savings-account-2-2026",
+    "name": "희망저축계좌Ⅱ",
+    "category": "생활·복지 지원",
+    "description": "일하는 주거·교육급여 수급 가구 및 차상위 가구의 자산 형성을 지원하는 사업입니다.",
+    "benefit": "근로·사업 활동과 가구 소득인정액 등 요건을 충족하면 자산 형성을 위한 지원을 받을 수 있습니다. 구체적인 적립·지원 금액은 해당 연도 공고를 확인하세요.",
+    "minAge": null,
+    "maxAge": null,
+    "ageNote": "가구 및 근로 요건을 확인하세요.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "전국 사업입니다. 세부 요건과 모집 일정은 거주지 행정복지센터에서 확인하세요.",
+    "studentRequirement": "any",
+    "studentNote": "학생 여부보다 가구의 수급 유형과 근로·사업소득 요건이 중요합니다.",
+    "incomeType": "unknown",
+    "incomeLimit": null,
+    "incomeNote": "가구 소득인정액이 기준 중위소득 50% 이하인지와 근로·사업소득 여부를 확인해야 합니다.",
+    "startDate": null,
+    "endDate": null,
+    "applicationType": "unknown",
+    "periodNote": "신청 일정은 지자체·모집 회차에 따라 달라질 수 있으므로 거주지 행정복지센터에 확인하세요.",
+    "applicationMethod": "주소지 관할 읍·면·동 행정복지센터에서 신청합니다. 모집 일정 및 접수 가능 여부를 먼저 확인하세요.",
+    "documents": "수급 자격, 근로·사업소득 및 가구 관련 서류는 관할 행정복지센터 안내를 확인하세요.",
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000100",
+    "sourceName": "복지로 · 보건복지부",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 복지로 안내 확인. 근로 요건과 모집 일정은 개별 확인 필요.",
+    "welfareRequirement": "basic-housing-education-or-near",
+    "welfareExtraNote": "가구 소득인정액과 현재 근로·사업소득 요건을 별도로 심사하므로 수급 유형만으로 자격이 확정되지 않습니다."
+  },
+
+  {
+    "id": "education-welfare-priority-2026",
+    "name": "교육복지우선지원사업",
+    "category": "생활·복지 지원",
+    "description": "교육지원이 필요한 학생이 밀집한 학교를 중심으로 교육·문화·복지 프로그램을 지원해 교육격차를 줄이는 사업입니다.",
+    "benefit": "학교별 교육·문화·복지 프로그램 등을 지원합니다. 실제 운영 프로그램과 참여 대상은 학교 및 교육청 기준에 따라 달라집니다.",
+    "minAge": null,
+    "maxAge": null,
+    "ageNote": "초·중·고 학생 대상입니다. 학교급, 학교의 사업 운영 여부와 학생의 지원 필요성이 중요합니다.",
+    "regionType": "nationwide",
+    "regions": [],
+    "regionNote": "교육청과 학교별로 사업학교 및 지원 기준이 다릅니다.",
+    "studentRequirement": "재학생",
+    "studentNote": "초·중·고 재학생 중 교육지원이 필요하고 사업학교 기준을 충족하는 학생이 대상이 될 수 있습니다.",
+    "incomeType": "none",
+    "incomeLimit": null,
+    "incomeNote": "교육급여 수급권자, 차상위계층 자녀 등은 주요 지원 대상 범주 중 하나이나 다른 기준도 있습니다.",
+    "startDate": null,
+    "endDate": null,
+    "applicationType": "unknown",
+    "periodNote": "전국 공통 신청 기간을 등록하지 않았습니다. 학교 또는 교육청에 프로그램 운영 여부를 문의하세요.",
+    "applicationMethod": "재학 중인 학교 또는 관할 교육청에 운영 여부와 참여 절차를 문의하세요.",
+    "documents": "학교가 정한 참여 절차와 필요 서류를 확인하세요.",
+    "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001120",
+    "sourceName": "복지로 · 교육부",
+    "sourceChecked": "2026-10-29",
+    "dataNotes": "2026년 중앙 복지서비스 안내 확인. 사업학교 선정과 개별 학생 지원 여부는 교육청·학교 기준에 따름.",
+    "welfareRequirement": "basic-or-near-poverty",
+    "welfareExtraNote": "학교가 사업학교인지, 학생이 종합적인 교육지원 필요 대상자로 인정되는지 추가 확인하세요."
+  }
 ];
 
 
@@ -1469,6 +1709,11 @@ function getFormValues() {
     student: $("#student").value,
 
     income: $("#income").value,
+
+    welfareStatus: $("#welfareStatus").value,
+    benefitTypes: Array.from(
+      document.querySelectorAll('input[name="benefitType"]:checked')
+    ).map(input => input.value),
 
     categories: Array.from(
       document.querySelectorAll('input[name="category"]:checked')
@@ -1750,12 +1995,54 @@ function compareIncome(policy, income) {
   };
 }
 
+function compareWelfare(policy, values) {
+  if (!policy.welfareRequirement) {
+    return { state: "neutral", label: "별도 수급 자격 조건 미등록", detail: "이 정책은 수급 유형을 별도 필수 비교 조건으로 등록하지 않았습니다." };
+  }
+  const status = values.welfareStatus;
+  const benefits = values.benefitTypes || [];
+  if (!status || status === "모름") {
+    return { state: "unknown", label: "수급 자격 확인 필요", detail: "기초생활수급·차상위·한부모 자격을 입력하면 관련 조건을 더 구체적으로 비교할 수 있습니다." };
+  }
+  const basic = status === "기초생활수급자";
+  const near = status === "차상위계층";
+  const singleParent = status === "한부모가족 지원대상자";
+  const has = (...types) => benefits.some(type => types.includes(type));
+  const requirement = policy.welfareRequirement;
+  let eligible = false;
+  let missingBenefitType = false;
+  if (requirement === "basic-or-near-poverty") eligible = basic || near;
+  else if (requirement === "basic-or-near-or-single-parent") eligible = basic || near || singleParent;
+  else if (requirement === "basic-any") eligible = basic;
+  else if (requirement === "basic-energy") {
+    if (basic && benefits.length === 0) missingBenefitType = true;
+    eligible = basic && benefits.length > 0;
+  } else if (requirement === "basic-living-medical") {
+    if (basic && benefits.length === 0) missingBenefitType = true;
+    eligible = basic && has("생계급여", "의료급여");
+  } else if (requirement === "basic-housing-education-or-near") {
+    if (basic && benefits.length === 0) missingBenefitType = true;
+    eligible = near || (basic && has("주거급여", "교육급여"));
+  }
+  if (missingBenefitType) {
+    return { state: "unknown", label: "급여 유형 추가 확인 필요", detail: "현재 받는 생계·의료·주거·교육급여 유형을 선택해야 정책별 기본 요건을 더 구체적으로 비교할 수 있습니다." };
+  }
+  if (!eligible) {
+    return { state: "mismatch", label: "등록된 수급 자격 조건 불일치", detail: "입력한 자격 유형은 이 정책에 등록된 기본 대상 범주와 일치하지 않습니다. 예외 또는 추가 대상은 공식 안내에서 확인하세요." };
+  }
+  if (policy.welfareExtraNote) {
+    return { state: "unknown", label: "기본 자격 범주 일치 · 세부 조건 확인", detail: policy.welfareExtraNote };
+  }
+  return { state: "match", label: "등록된 자격 범주 일치", detail: "기본 자격 범주와 일치합니다. 최종 지원 여부는 공식 심사에 따릅니다." };
+}
+
 function comparePolicy(policy, values) {
   const conditions = {
     age: compareAge(policy, values.age),
     region: compareRegion(policy, values.region),
     student: compareStudent(policy, values.student),
-    income: compareIncome(policy, values.income)
+    income: compareIncome(policy, values.income),
+    welfare: compareWelfare(policy, values)
   };
 
   const states = Object.values(conditions).map(item => item.state);
@@ -2093,6 +2380,7 @@ function createPolicyCard(result) {
           ${conditionItem("거주 지역", comparison.conditions.region)}
           ${conditionItem("학생 여부", comparison.conditions.student)}
           ${conditionItem("소득", comparison.conditions.income)}
+          ${conditionItem("수급 자격", comparison.conditions.welfare)}
         </div>
 
       </div>
