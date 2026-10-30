@@ -1020,6 +1020,131 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Executive dashboard redesign ── */
+:root {
+  --navy: #101f35;
+  --navy-dark: #0a1525;
+  --blue: #2459d3;
+  --sky: #edf3ff;
+  --bg: #f3f5f8;
+  --text: #172438;
+  --muted: #5c6b80;
+  --border: #d7deea;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(16, 31, 53, .045);
+}
+body { font-size: 15px; line-height: 1.55; letter-spacing: -.12px; }
+.container { width: min(1380px, calc(100% - 48px)); }
+.header { padding: 13px 0; background: #0d1b2e; }
+.brand { font-size: 18px; letter-spacing: -.55px; }
+.header-tag { font-size: 11px; border-radius: 6px; }
+.hero { padding: 26px 0 30px; background: #14263f; }
+.hero-label { margin-bottom: 7px; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; }
+.hero h1 { font-size: clamp(26px, 3vw, 34px); margin-bottom: 7px; letter-spacing: -1.1px; }
+.hero p { font-size: 14px; max-width: 760px; }
+.hero-features { margin-top: 14px; gap: 7px; }
+.hero-features span { padding: 5px 8px; border-radius: 5px; font-size: 11px; }
+.main { padding: 20px 0 40px; }
+.panel { padding: 17px 20px; border-radius: 10px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(16,31,53,.035); }
+#searchPanel .section-heading { margin-bottom: 13px; }
+#searchPanel .section-heading h2 { font-size: 18px; margin-bottom: 2px; }
+#searchPanel .section-heading p { font-size: 12px; }
+#searchPanel .form-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 16px; }
+#searchPanel .field label, #searchPanel .field-title { font-size: 12px; margin-bottom: 5px; }
+#searchPanel .required-note { font-size: 10px; }
+#searchPanel .input, #searchPanel .select { min-height: 38px; padding: 7px 10px; border-radius: 6px; font-size: 13px; }
+#searchPanel .field-help { display: none; }
+#searchPanel .check-grid { gap: 6px; }
+#searchPanel .check-option { min-height: 34px; padding: 6px 9px; font-size: 12px; border-radius: 6px; }
+#searchPanel .check-option input { width: 14px; height: 14px; }
+#searchPanel .form-actions { margin-top: 14px; gap: 8px; }
+#searchPanel .btn { min-height: 37px; padding: 8px 14px; font-size: 12px; border-radius: 6px; }
+.dashboard-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 14px; margin-top: 14px; }
+.dashboard-grid #calendarPanel { padding: 16px; border-radius: 10px; }
+.dashboard-grid #calendarPanel .section-heading { margin-bottom: 13px; }
+.dashboard-grid #calendarPanel .section-heading h2 { font-size: 17px; }
+.dashboard-grid #calendarPanel .section-heading p { font-size: 12px; }
+.dashboard-grid #calendarPanel .calendar-day { min-height: 66px; padding: 4px; }
+.dashboard-grid #calendarPanel .calendar-event { font-size: 10px; line-height: 1.3; padding: 3px; }
+.dashboard-grid #calendarPanel .calendar-date { font-size: 12px; }
+.dashboard-grid #calendarPanel .calendar-weekday { font-size: 11px; padding: 6px 1px; }
+.dashboard-grid #calendarPanel .calendar-help { font-size: 11px; }
+.dashboard-grid #calendarEvents { max-height: 230px; }
+.dashboard-grid .results-header { margin: 0 0 12px; flex-direction: row; align-items: center; gap: 10px; }
+.dashboard-grid .results-header h2 { font-size: 19px; letter-spacing: -.4px; }
+.dashboard-grid .results-header p { font-size: 12px; }
+.dashboard-grid .sort-wrap { width: auto; gap: 6px; }
+.dashboard-grid .sort-wrap label { font-size: 11px; }
+.dashboard-grid .sort-wrap select { min-height: 34px; font-size: 12px; border-radius: 6px; }
+.dashboard-grid .policy-list { gap: 11px; }
+.dashboard-grid .policy-card { border-radius: 10px; box-shadow: 0 1px 5px rgba(16,31,53,.04); }
+.dashboard-grid .card-top { padding: 16px 17px 13px; }
+.policy-eyebrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.dashboard-grid .category-tag { font-size: 10px; padding: 4px 7px; border-radius: 4px; }
+.dashboard-grid .status-badge { font-size: 11px; padding: 4px 8px; border-radius: 5px; }
+.dashboard-grid .policy-title { color: #10213a; font-size: 19px; line-height: 1.4; letter-spacing: -.45px; margin: 0; }
+.dashboard-grid .card-description { color: #42536a; font-size: 13px; line-height: 1.7; margin: 8px 0 0; }
+.dashboard-grid .deadline-alert { margin-top: 9px; font-size: 11px; padding: 4px 7px; border-radius: 4px; }
+.policy-key-info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(120px, .8fr); border-bottom: 1px solid #e8edf4; }
+.policy-info-block { padding: 13px 16px; min-width: 0; }
+.policy-info-block + .policy-info-block { border-left: 1px solid #e8edf4; background: #fafbfd; }
+.info-label, .policy-section-label { display: block; color: #65748a; font-size: 10px; font-weight: 800; letter-spacing: .7px; margin-bottom: 5px; }
+.policy-info-block p { color: #1e2e45; font-size: 13px; font-weight: 600; line-height: 1.65; margin: 0; overflow-wrap: anywhere; }
+.policy-info-block .application-date { color: #142b4b; font-size: 14px; font-weight: 800; letter-spacing: -.2px; }
+.application-note { display: inline-block; margin-top: 5px; font-size: 11px; color: #5a6b81; }
+.policy-conditions { padding: 12px 16px 13px; }
+.policy-section-label { font-size: 10px; margin-bottom: 8px; }
+.condition-chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.condition-chip { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 5px; background: #f5f7fa; border: 1px solid #e8edf3; padding: 6px 8px; border-radius: 5px; font-size: 11px; }
+.condition-chip > span { color: #65748a; flex-shrink: 0; }
+.condition-result { text-align: right; overflow-wrap: anywhere; font-size: 11px; }
+.condition-result.mini-match { color: #087443; background: transparent; }
+.condition-result.mini-mismatch { color: #b42332; background: transparent; }
+.condition-result.mini-unknown { color: #9a5b08; background: transparent; }
+.condition-result.mini-neutral { color: #48576b; background: transparent; }
+.match-note { margin: 9px 0 0; padding: 7px 9px; border-radius: 5px; font-size: 12px; font-weight: 800; }
+.match-note.match { background: #e9f7ef; color: #087443; }
+.match-note.mismatch { background: #fff0f0; color: #b42332; }
+.match-note.unknown { background: #fff5e6; color: #92520b; }
+.match-note.neutral { background: #f0f3f7; color: #475569; }
+.match-note span { font-weight: 500; }
+.policy-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px; border-top: 1px solid #e8edf4; background: #fbfcfe; }
+.source-meta { color: #64748b; font-size: 10px; line-height: 1.5; }
+.dashboard-grid .official-link { flex-shrink: 0; min-height: 36px; padding: 8px 12px; font-size: 12px; border-radius: 6px; gap: 7px; }
+.dashboard-grid .official-link span { font-size: 15px; }
+.dashboard-grid .empty-state { padding: 28px 16px; border-radius: 9px; }
+.dashboard-grid .empty-state h3 { font-size: 16px; }
+.dashboard-grid .empty-state p { font-size: 12px; }
+.notice { padding: 14px 16px; border-radius: 8px; margin-top: 18px; }
+.notice p { font-size: 11px; line-height: 1.7; }
+@media (max-width: 1050px) {
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+  .dashboard-grid #calendarPanel .calendar-day { min-height: 68px; }
+  .dashboard-grid #calendarEvents { max-height: 250px; }
+}
+@media (max-width: 760px) {
+  .container { width: min(100% - 24px, 1380px); }
+  .hero { padding: 23px 0 25px; }
+  #searchPanel .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px 12px; }
+  .dashboard-grid .results-header { flex-direction: column; align-items: flex-start; }
+  .dashboard-grid .sort-wrap { width: 100%; }
+  .dashboard-grid .sort-wrap select { flex: 1; }
+  .condition-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .container { width: calc(100% - 20px); }
+  .panel { padding: 14px 12px; }
+  #searchPanel .form-grid { grid-template-columns: 1fr; }
+  #searchPanel .field.full { grid-column: auto; }
+  #searchPanel .check-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .policy-key-info { grid-template-columns: 1fr; }
+  .policy-info-block + .policy-info-block { border-left: 0; border-top: 1px solid #e8edf4; }
+  .policy-card-footer { align-items: flex-start; flex-direction: column; }
+  .dashboard-grid .official-link { width: 100%; }
+  .condition-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 </style>
 </head>
 
@@ -2523,7 +2648,6 @@ function createPolicyCard(result) {
   const policy = result.policy;
   const comparison = result.comparison;
   const application = result.application;
-
   const url = safeURL(policy.url);
   const daysUntilDeadline = getDeadlineInfo(policy);
   const deadlineSoon = daysUntilDeadline !== null;
@@ -2532,136 +2656,62 @@ function createPolicyCard(result) {
     policy.applicationType === "always"
       ? "상시 신청"
       : policy.startDate && policy.endDate
-        ? `${formatDate(policy.startDate)} ~ ${formatDate(policy.endDate)}`
-        : "공식 공고 확인 필요";
+        ? `${formatDate(policy.startDate)} – ${formatDate(policy.endDate)}`
+        : "공식 공고에서 일정 확인";
 
   const officialLink = url
-    ? `
-      <a
-        class="btn btn-primary"
-        href="${escapeHTML(url)}"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        공식 안내 페이지 확인
-      </a>
-    `
-    : `
-      <span class="btn btn-secondary" aria-disabled="true">
-        공식 링크 확인 필요
-      </span>
-    `;
+    ? `<a class="btn btn-primary official-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">공식 안내 보기 <span aria-hidden="true">↗</span></a>`
+    : `<span class="btn btn-secondary official-link" aria-disabled="true">공식 링크 미등록</span>`;
 
-  const periodDetail =
-    application.detail +
-    (policy.periodNote ? "\n" + policy.periodNote : "");
-
-  const bannerExtra =
-    comparison.overall === STATUS.MATCH
-      ? "지원 자격에 부합할 가능성이 있습니다. 최종 선정은 공식 심사 결과에 따릅니다."
-      : comparison.overall === STATUS.MISMATCH
-        ? "현재 입력 정보 중 일치하지 않는 조건이 있습니다. 예외 조건이 있는지 공식 안내를 확인하세요."
-        : "확인되지 않은 조건이 남아 있습니다. 세부 자격을 공식 안내에서 확인하세요.";
+  const keyConditions = [
+    ["연령", comparison.conditions.age],
+    ["지역", comparison.conditions.region],
+    ["학적", comparison.conditions.student],
+    ["소득", comparison.conditions.income],
+    ["자격", comparison.conditions.welfare]
+  ];
 
   return `
     <article class="policy-card ${deadlineSoon ? "deadline-soon" : ""}">
-
       <div class="card-top">
-        <div class="card-heading">
-          <div>
-            <h3>${escapeHTML(policy.name)}</h3>
-            <span class="category-tag">${escapeHTML(policy.category)}</span>
-          </div>
-
-          <span class="status-badge ${application.className}">
-            ${escapeHTML(application.label)}
-          </span>
+        <div class="policy-eyebrow">
+          <span class="category-tag">${escapeHTML(policy.category)}</span>
+          <span class="status-badge ${application.className}">${escapeHTML(application.label)}</span>
         </div>
-
-        ${deadlineSoon ? `<div class="deadline-alert">${daysUntilDeadline === 0 ? "오늘 마감" : `마감 ${daysUntilDeadline}일 전`} · 신청 기간을 확인하세요</div>` : ""}
-        <p class="card-description">
-          ${escapeHTML(policy.description)}
-        </p>
+        <h3 class="policy-title">${escapeHTML(policy.name)}</h3>
+        <p class="card-description">${escapeHTML(policy.description)}</p>
+        ${deadlineSoon ? `<div class="deadline-alert">${daysUntilDeadline === 0 ? "오늘 마감" : `마감 ${daysUntilDeadline}일 전`}</div>` : ""}
       </div>
 
-      <div class="card-middle">
-
-        <h4 class="eligibility-title">나의 조건과 비교한 결과</h4>
-
-        <div class="match-banner ${overallClass(comparison.overall)}">
-          ${escapeHTML(comparison.overall)}
-          <small>
-            ${escapeHTML(overallExplanation(comparison.overall))}
-            ${escapeHTML(bannerExtra)}
-          </small>
+      <div class="policy-key-info">
+        <div class="policy-info-block policy-benefit">
+          <span class="info-label">지원 내용</span>
+          <p>${escapeHTML(policy.benefit || "공식 안내에서 지원 내용을 확인하세요.")}</p>
         </div>
-
-        <div class="condition-grid">
-          ${conditionItem("연령", comparison.conditions.age)}
-          ${conditionItem("거주 지역", comparison.conditions.region)}
-          ${conditionItem("학생 여부", comparison.conditions.student)}
-          ${conditionItem("소득", comparison.conditions.income)}
-          ${conditionItem("수급 자격", comparison.conditions.welfare)}
+        <div class="policy-info-block">
+          <span class="info-label">신청 일정</span>
+          <p class="application-date">${escapeHTML(dateText)}</p>
+          <span class="application-note">${escapeHTML(application.label)}</span>
         </div>
-
       </div>
 
-      <div class="detail-section">
-        <h4>지원 및 신청 정보</h4>
-
-        <div class="detail-grid">
-          ${detailItem("지원 내용", policy.benefit, true)}
-
-          ${detailItem("신청 기간", dateText)}
-
-          <div class="detail-item">
-            <div class="detail-label">현재 신청 상태</div>
-            <div class="detail-value">
-              <span class="status-badge ${application.className}">
-                ${escapeHTML(application.label)}
-              </span>
-              <div class="condition-detail">
-                ${escapeHTML(periodDetail)}
-              </div>
+      <div class="policy-conditions">
+        <div class="policy-section-label">입력 조건과 비교</div>
+        <div class="condition-chips">
+          ${keyConditions.map(([label, item]) => `
+            <div class="condition-chip">
+              <span>${escapeHTML(label)}</span>
+              <strong class="condition-result ${stateClass(item.state)}">${escapeHTML(item.label)}</strong>
             </div>
-          </div>
-
-          ${detailItem("신청 자격", [
-            policy.ageNote,
-            policy.regionNote,
-            policy.studentNote,
-            policy.incomeNote
-          ].filter(Boolean).join("\n\n"), true)}
-
-          ${detailItem("신청 방법", policy.applicationMethod, true)}
-
-          ${detailItem("필요 서류", policy.documents, true)}
+          `).join("")}
         </div>
+        <p class="match-note ${overallClass(comparison.overall)}">${escapeHTML(comparison.overall)} <span>· ${escapeHTML(overallExplanation(comparison.overall))}</span></p>
       </div>
 
-      <div class="detail-section">
-        <h4>정보 출처 및 확인일</h4>
-
-        <div class="source-line">
-          출처: ${escapeHTML(policy.sourceName)}
-          <br>
-          정보 확인일: ${escapeHTML(policy.sourceChecked || "확인일 미등록")}
-          <br>
-          데이터 참고: ${escapeHTML(policy.dataNotes || "추가 확인 필요")}
-          <br>
-          ${url
-            ? `공식 주소: <a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(url)}</a>`
-            : "공식 주소: 확인 필요"}
-        </div>
-      </div>
-
-      <div class="card-bottom">
-        <span class="last-checked">
-          정보 확인일: ${escapeHTML(policy.sourceChecked || "미등록")}
-        </span>
+      <div class="policy-card-footer">
+        <span class="source-meta">${escapeHTML(policy.sourceName || "공식 출처")}${policy.sourceChecked ? ` · 확인 ${escapeHTML(policy.sourceChecked)}` : ""}</span>
         ${officialLink}
       </div>
-
     </article>
   `;
 }
