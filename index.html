@@ -720,6 +720,170 @@ a:focus-visible {
   background: white;
 }
 
+/* 검색 후 핵심 화면: 왼쪽 일정, 오른쪽 맞춤 정책 */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  align-items: start;
+  gap: 18px;
+  margin-top: 24px;
+}
+.dashboard-grid > section,
+.dashboard-grid > #calendarPanel {
+  min-width: 0;
+}
+.dashboard-grid #calendarPanel {
+  margin: 0;
+  padding: 20px;
+}
+.dashboard-grid #calendarPanel .section-heading h2 {
+  font-size: 19px;
+}
+.dashboard-grid #calendarPanel .section-heading p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.dashboard-grid #calendarPanel .calendar-day {
+  min-height: 72px;
+  padding: 4px;
+}
+.dashboard-grid #calendarPanel .calendar-weekday {
+  font-size: 11px;
+  padding: 6px 1px;
+}
+.dashboard-grid #calendarPanel .calendar-event {
+  font-size: 9px;
+  padding: 3px;
+  line-height: 1.25;
+}
+.dashboard-grid #calendarPanel .calendar-toolbar {
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.dashboard-grid #calendarPanel .calendar-month {
+  font-size: 17px;
+}
+.dashboard-grid #calendarPanel .calendar-nav {
+  gap: 4px;
+}
+.dashboard-grid #calendarPanel .calendar-nav button {
+  min-width: 30px;
+  min-height: 32px;
+  padding: 3px 6px;
+  font-size: 11px;
+}
+.dashboard-grid #calendarPanel .calendar-legend {
+  gap: 8px;
+  font-size: 11px;
+}
+.dashboard-grid #calendarEvents {
+  max-height: 390px;
+  overflow-y: auto;
+  padding-right: 3px;
+}
+.dashboard-grid #calendarEvents .calendar-schedule-jump {
+  padding: 9px 10px;
+}
+.dashboard-grid > section[aria-labelledby="resultsTitle"] {
+  min-width: 0;
+}
+.dashboard-grid .results-header {
+  margin: 0 0 14px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+.dashboard-grid .results-header h2 {
+  font-size: 21px;
+}
+.dashboard-grid .results-header p {
+  line-height: 1.6;
+}
+.dashboard-grid .sort-wrap {
+  width: 100%;
+}
+.dashboard-grid .sort-wrap select {
+  max-width: none;
+  flex: 1;
+}
+.dashboard-grid .policy-list {
+  gap: 12px;
+}
+.dashboard-grid .card-top {
+  padding: 17px 18px 14px;
+}
+.dashboard-grid .card-heading h3 {
+  font-size: 17px;
+  line-height: 1.45;
+}
+.dashboard-grid .card-description {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.dashboard-grid .card-middle,
+.dashboard-grid .detail-section {
+  padding: 15px 18px;
+}
+.dashboard-grid .condition-grid,
+.dashboard-grid .detail-grid {
+  gap: 8px;
+}
+.dashboard-grid .condition-item {
+  padding: 9px;
+}
+.dashboard-grid .condition-value,
+.dashboard-grid .detail-value {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.dashboard-grid .match-banner {
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.dashboard-grid .card-bottom {
+  padding: 13px 18px;
+}
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dashboard-grid #calendarPanel {
+    padding: 18px;
+  }
+  .dashboard-grid #calendarPanel .calendar-day {
+    min-height: 68px;
+  }
+  .dashboard-grid #calendarEvents {
+    max-height: 300px;
+  }
+}
+@media (max-width: 650px) {
+  .dashboard-grid {
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .dashboard-grid #calendarPanel {
+    padding: 16px 12px;
+  }
+  .dashboard-grid #calendarPanel .calendar-day {
+    min-height: 62px;
+    padding: 3px 2px;
+  }
+  .dashboard-grid #calendarPanel .calendar-event {
+    font-size: 8px;
+    padding: 2px;
+  }
+  .dashboard-grid .card-top,
+  .dashboard-grid .card-middle,
+  .dashboard-grid .detail-section {
+    padding: 15px 13px;
+  }
+  .dashboard-grid .condition-grid,
+  .dashboard-grid .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* 신청 일정 달력 */
 .calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.calendar-month{margin:0;color:var(--navy);font-size:19px}.calendar-nav{display:flex;gap:8px}.calendar-nav button{border:1px solid var(--border);background:white;color:var(--navy);border-radius:8px;min-width:38px;min-height:38px;cursor:pointer}.calendar-legend{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:12px;margin-bottom:12px}.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.legend-start{background:#3978c5}.legend-end{background:#c44747}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--border);border-left:1px solid var(--border)}.calendar-weekday,.calendar-day{min-width:0;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.calendar-weekday{text-align:center;padding:8px 2px;background:#f5f8fc;color:var(--muted);font-size:12px;font-weight:750}.calendar-day{min-height:92px;padding:6px;background:white}.calendar-day.is-today{background:#f0f7ff}.calendar-day.is-empty{background:#f8fafc}.calendar-date{font-size:12px;font-weight:800;color:var(--text)}.calendar-event{display:block;margin-top:4px;padding:3px 4px;border-radius:4px;font-size:10px;line-height:1.35;overflow-wrap:anywhere}.calendar-event.start{background:#eaf3ff;color:#24568c}.calendar-event.end{background:#ffeded;color:#a52f2f}.calendar-help{margin:12px 0 0;font-size:12px;color:var(--muted)}.deadline-alert{display:inline-block;margin-top:9px;padding:5px 9px;border-radius:6px;background:var(--red-bg);color:var(--red);font-size:12px;font-weight:800}.policy-card.deadline-soon{border:2px solid #d85a5a}@media(max-width:650px){.calendar-day{min-height:68px;padding:4px 2px}.calendar-event{font-size:9px;padding:3px 2px}.calendar-date{font-size:11px}}
 
@@ -865,24 +1029,7 @@ a:focus-visible {
 
 <main class="container main">
 
-  <section class="panel" id="calendarPanel">
-    <div class="section-heading">
-      <h2>정책 신청 일정 달력</h2>
-      <p>등록된 정책의 모집 시작일과 마감일을 확인하고, 마감이 임박한 정책을 놓치지 않도록 확인하세요.</p>
-    </div>
-    <div class="calendar-toolbar">
-      <h3 class="calendar-month" id="calendarMonth" aria-live="polite"></h3>
-      <div class="calendar-nav">
-        <button type="button" id="calendarPrev" aria-label="이전 달">이전</button>
-        <button type="button" id="calendarToday">이번 달</button>
-        <button type="button" id="calendarNext" aria-label="다음 달">다음</button>
-      </div>
-    </div>
-    <div class="calendar-legend"><span><i class="legend-dot legend-start"></i>모집 시작</span><span><i class="legend-dot legend-end"></i>신청 마감</span></div>
-    <div class="calendar-grid" id="calendarGrid" aria-label="정책 신청 일정 달력"></div>
-    <p class="calendar-help">달력은 코드에 등록된 날짜를 표시합니다. 일정이 확인되지 않은 정책은 달력에 표시되지 않으므로 공식 공고를 확인하세요.</p>
-    <div id="calendarEvents" aria-live="polite"></div>
-  </section>
+
 
   <section class="panel" id="searchPanel">
     <div class="section-heading">
@@ -1047,6 +1194,25 @@ a:focus-visible {
     </form>
   </section>
 
+  <div class="dashboard-grid">
+  <section class="panel" id="calendarPanel">
+    <div class="section-heading">
+      <h2>정책 신청 일정 달력</h2>
+      <p>등록된 정책의 모집 시작일과 마감일을 확인하고, 마감이 임박한 정책을 놓치지 않도록 확인하세요.</p>
+    </div>
+    <div class="calendar-toolbar">
+      <h3 class="calendar-month" id="calendarMonth" aria-live="polite"></h3>
+      <div class="calendar-nav">
+        <button type="button" id="calendarPrev" aria-label="이전 달">이전</button>
+        <button type="button" id="calendarToday">이번 달</button>
+        <button type="button" id="calendarNext" aria-label="다음 달">다음</button>
+      </div>
+    </div>
+    <div class="calendar-legend"><span><i class="legend-dot legend-start"></i>모집 시작</span><span><i class="legend-dot legend-end"></i>신청 마감</span></div>
+    <div class="calendar-grid" id="calendarGrid" aria-label="정책 신청 일정 달력"></div>
+    <p class="calendar-help">달력은 코드에 등록된 날짜를 표시합니다. 일정이 확인되지 않은 정책은 달력에 표시되지 않으므로 공식 공고를 확인하세요.</p>
+    <div id="calendarEvents" aria-live="polite"></div>
+  </section>
   <section aria-labelledby="resultsTitle">
     <div class="results-header">
       <div>
@@ -1082,6 +1248,9 @@ a:focus-visible {
       </div>
     </div>
   </section>
+  </div>
+
+
 
   <section class="notice" aria-labelledby="noticeTitle">
     <h3 id="noticeTitle">정책 정보 이용 안내</h3>
