@@ -2397,9 +2397,16 @@ function comparePolicy(policy, values) {
 
   if (states.includes("mismatch")) {
     overall = STATUS.MISMATCH;
-  } else if (states.includes("unknown")) {
+  } else if (
+    states.includes("unknown") ||
+    !states.includes("match")
+  ) {
+    // 확인되지 않은 조건이 있거나 비교 가능한 조건이 하나도 없으면
+    // 자격 충족으로 단정하지 않고 추가 확인으로 표시합니다.
     overall = STATUS.UNKNOWN;
   } else {
+    // 불일치나 미확인 조건 없이 등록된 비교 조건이 일치한 경우입니다.
+    // 최종 신청 자격을 보장하는 판정은 아닙니다.
     overall = STATUS.MATCH;
   }
 
