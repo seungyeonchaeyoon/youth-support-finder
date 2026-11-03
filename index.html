@@ -2157,6 +2157,57 @@ a{color:#8a671c !important}
 .footer{background:#f6efd8 !important;border-top-color:#eadfbf !important;color:#746744 !important}
 button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline-color:#c49a35 !important}
 
+
+/* Character meadow and rounded handwritten-style typography */
+body,button,input,select,textarea{
+  font-family:'Jua','Malgun Gothic',sans-serif !important;
+}
+body{font-weight:400 !important;letter-spacing:-.15px}
+.hero.meadow-hero{
+  background:
+    radial-gradient(ellipse at 16% 100%,#9cbd8d 0 33%,transparent 34%),
+    radial-gradient(ellipse at 80% 115%,#a9c998 0 39%,transparent 40%),
+    linear-gradient(180deg,#bce4e8 0%,#d8edda 22%,#c4dcb0 23%,#a8c997 100%) !important;
+  border-radius:0 0 28px 28px !important;
+  overflow:hidden !important;
+  padding:42px 0 45px !important;
+}
+.meadow-hero .container.meadow-hero-inner{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(230px,330px) !important;
+  align-items:center !important;
+  gap:20px !important;
+}
+.meadow-hero .hero-copy{min-width:0}
+.meadow-hero .hero h1,.meadow-hero h1{
+  font-family:'Jua',sans-serif !important;
+  font-weight:400 !important;
+}
+.meadow-hero .hero-mascots{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  min-width:0 !important;
+}
+.meadow-hero .hero-mascots img{
+  display:block !important;
+  width:100% !important;
+  max-width:310px !important;
+  height:auto !important;
+  border:0 !important;
+  border-radius:18px !important;
+  box-shadow:0 7px 18px rgba(61,77,45,.10) !important;
+}
+@media(max-width:700px){
+ .meadow-hero{padding:34px 0 30px !important}
+ .meadow-hero .container.meadow-hero-inner{
+   grid-template-columns:1fr !important;
+   gap:13px !important;
+ }
+ .meadow-hero .hero-mascots{justify-content:flex-end !important}
+ .meadow-hero .hero-mascots img{width:min(72%,270px) !important}
+}
+
 </style>
 </head>
 
@@ -2169,18 +2220,23 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
   </div>
 </header>
 
-<section class="hero">
-  <div class="container">
-    <span class="hero-label">MY SUPPORT FINDER</span>
-    <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
-    <p>
-      나이와 거주 지역, 학생 여부, 소득 구간 및 수급 자격을 입력하면
-      관련 지원 정책을 확인하고 자격 조건을 비교할 수 있습니다.
-    </p>
-    <div class="hero-features">
-      <span>공식 정책 정보</span>
-      <span>조건별 자격 비교</span>
-      <span>신청 기간 자동 판정</span>
+<section class="hero meadow-hero">
+  <div class="container meadow-hero-inner">
+    <div class="hero-copy">
+      <span class="hero-label">MY SUPPORT FINDER</span>
+      <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
+      <p>
+        나이와 거주 지역, 학생 여부, 소득 구간 및 수급 자격을 입력하면
+        관련 지원 정책을 확인하고 자격 조건을 비교할 수 있습니다.
+      </p>
+      <div class="hero-features">
+        <span>공식 정책 정보</span>
+        <span>조건별 자격 비교</span>
+        <span>신청 기간 자동 판정</span>
+      </div>
+    </div>
+    <div class="hero-mascots" aria-label="참고 이미지 속 세 캐릭터">
+      <img src="data:image/jpeg;base64,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" alt="세 마스코트 캐릭터" />
     </div>
   </div>
 </section>
