@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#16345c">
+<meta name="theme-color" content="#718873">
 <title>나에게 맞는 지원 찾기</title>
 
 <style>
@@ -1387,6 +1387,331 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
   .hero h1 { font-size: 32px !important; }
   .panel { padding: 21px 16px !important; }
   .section-heading h2 { font-size: 23px !important; }
+}
+
+
+/* =========================================================
+   Botanical / warm editorial redesign
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap');
+
+:root {
+  --navy:#304638 !important;
+  --navy-dark:#23372b !important;
+  --blue:#58745d !important;
+  --sky:#edf1e6 !important;
+  --sky-dark:#dfe8d9 !important;
+  --bg:#f5f1e7 !important;
+  --white:#fffdf7 !important;
+  --text:#29382e !important;
+  --muted:#59675c !important;
+  --border:#d9dfd1 !important;
+  --green:#42684d !important;
+  --green-bg:#e7efe3 !important;
+  --orange:#92552f !important;
+  --orange-bg:#f8eadb !important;
+  --red:#a3433d !important;
+  --red-bg:#f8e8e4 !important;
+  --gray-bg:#eceee8 !important;
+  --radius:17px !important;
+  --shadow:0 5px 18px rgba(47,65,49,.08) !important;
+}
+html,body { background:#f5f1e7 !important; color:#29382e !important; }
+body {
+  font-family:'Gowun Dodum','Malgun Gothic',sans-serif !important;
+  font-size:15px !important;
+  font-weight:600 !important;
+  line-height:1.75 !important;
+  letter-spacing:-.2px !important;
+}
+button,input,select { font-family:'Gowun Dodum','Malgun Gothic',sans-serif !important; }
+.container { width:min(1240px,calc(100% - 42px)) !important; }
+
+/* 상단 내비게이션 */
+.header {
+  background:#718873 !important;
+  color:#fffdf7 !important;
+  padding:15px 0 !important;
+  border-bottom:4px solid #d8dfcf !important;
+}
+.brand {
+  color:#fffdf7 !important;
+  font-family:'Jua','Gowun Dodum',sans-serif !important;
+  font-size:23px !important;
+  font-weight:400 !important;
+  letter-spacing:-.3px !important;
+}
+.header-tag {
+  color:#fffdf7 !important;
+  border:1px solid rgba(255,253,247,.65) !important;
+  border-radius:999px !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+
+/* 메인 소개 영역: 참고 이미지의 세이지 그린 + 크림 톤 */
+.hero {
+  position:relative !important;
+  overflow:hidden !important;
+  background:linear-gradient(112deg,#829783 0%,#9eae98 62%,#d8dfcb 100%) !important;
+  color:#26392d !important;
+  padding:54px 0 58px !important;
+  border-radius:0 0 28px 28px !important;
+}
+.hero:after {
+  content:"" !important;
+  position:absolute !important;
+  width:310px !important;height:310px !important;
+  right:7% !important;top:-115px !important;
+  border-radius:50% !important;
+  background:rgba(255,250,237,.28) !important;
+  pointer-events:none !important;
+}
+.hero .container { position:relative !important; z-index:1 !important; }
+.hero-label {
+  color:#304b37 !important;
+  font-size:13px !important;
+  font-weight:900 !important;
+  letter-spacing:1.3px !important;
+}
+.hero h1 {
+  color:#26392d !important;
+  font-family:'Jua','Gowun Dodum',sans-serif !important;
+  font-size:clamp(34px,4.4vw,48px) !important;
+  font-weight:400 !important;
+  line-height:1.35 !important;
+  letter-spacing:-.7px !important;
+  text-shadow:none !important;
+}
+.hero p {
+  color:#354a3a !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  line-height:1.9 !important;
+  max-width:650px !important;
+}
+.hero-features { gap:10px !important; }
+.hero-features span {
+  background:#f8f5e9 !important;
+  color:#405b45 !important;
+  border:1px solid #d8dfcf !important;
+  border-radius:999px !important;
+  padding:8px 14px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+}
+
+/* 본문 카드 */
+.main { padding-top:32px !important; }
+.panel,.policy-card {
+  background:#fffdf7 !important;
+  border:1px solid #d9dfd1 !important;
+  border-radius:19px !important;
+  box-shadow:0 5px 18px rgba(47,65,49,.075) !important;
+}
+.panel { padding:27px !important; }
+.section-heading h2,.results-header h2,.detail-section h4,
+.notice h3,.empty-state h3 {
+  color:#304638 !important;
+  font-family:'Jua','Gowun Dodum',sans-serif !important;
+  font-weight:400 !important;
+  letter-spacing:-.2px !important;
+}
+.section-heading h2 { font-size:25px !important; }
+.section-heading p,.results-header p {
+  color:#59675c !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+}
+.field label,.field-title,.eligibility-title {
+  color:#304638 !important;
+  font-size:14px !important;
+  font-weight:900 !important;
+}
+.required-note,.field-help {
+  color:#59675c !important;
+  font-weight:600 !important;
+}
+.input,.select,.sort-wrap select {
+  background:#fffefa !important;
+  color:#29382e !important;
+  border:1.5px solid #cbd5c6 !important;
+  border-radius:11px !important;
+  font-weight:700 !important;
+  min-height:47px !important;
+}
+.input::placeholder { color:#788579 !important; opacity:1 !important; }
+.input:focus,.select:focus {
+  border-color:#718873 !important;
+  outline:3px solid #e5ecdf !important;
+}
+.check-option {
+  background:#fffefa !important;
+  color:#354638 !important;
+  border:1.5px solid #d9dfd1 !important;
+  border-radius:11px !important;
+  font-weight:800 !important;
+}
+.check-option:has(input:checked) {
+  background:#eaf0e5 !important;
+  color:#304638 !important;
+  border-color:#829982 !important;
+}
+.check-option input { accent-color:#58745d !important; }
+
+/* 버튼 */
+.btn {
+  border-radius:11px !important;
+  font-weight:900 !important;
+  min-height:46px !important;
+}
+.btn-primary {
+  background:#bd7955 !important;
+  color:#fff !important;
+  border:1px solid #a96746 !important;
+  box-shadow:0 3px 0 #995d40 !important;
+}
+.btn-primary:hover { background:#a96849 !important; }
+.btn-secondary {
+  background:#e9eee4 !important;
+  color:#304638 !important;
+  border:1px solid #d2ddce !important;
+}
+.btn-secondary:hover { background:#dfe8d9 !important; }
+.btn-outline {
+  color:#405d45 !important;
+  border:1px solid #9eaf9a !important;
+}
+
+/* 요약 및 정책 카드 */
+.summary-chip {
+  background:#fffdf7 !important;
+  color:#405044 !important;
+  border:1px solid #d9dfd1 !important;
+  border-radius:10px !important;
+  font-weight:800 !important;
+}
+.summary-chip strong { color:#a76543 !important; font-weight:900 !important; }
+.card-top { background:#f1f3e9 !important; border-bottom:1px solid #dfe5d8 !important; }
+.card-heading h3,.policy-title {
+  color:#304638 !important;
+  font-family:'Jua','Gowun Dodum',sans-serif !important;
+  font-size:21px !important;
+  font-weight:400 !important;
+  line-height:1.45 !important;
+}
+.category-tag {
+  background:#e2eadc !important;
+  color:#405d45 !important;
+  font-weight:900 !important;
+  border-radius:7px !important;
+}
+.status-badge { font-weight:900 !important; border-radius:999px !important; }
+.card-description {
+  color:#46564a !important;
+  font-weight:700 !important;
+  line-height:1.8 !important;
+}
+.policy-key-info,.policy-conditions { background:#fffdf7 !important; }
+.policy-info-block {
+  background:#f5f3e9 !important;
+  border:1px solid #e2e4d8 !important;
+  border-radius:12px !important;
+}
+.info-label,.policy-section-label {
+  color:#506a52 !important;
+  font-weight:900 !important;
+}
+.policy-info-block p,.application-date {
+  color:#29382e !important;
+  font-weight:900 !important;
+}
+.condition-chip {
+  background:#f5f5ed !important;
+  border:1px solid #e2e5da !important;
+  border-radius:9px !important;
+}
+.condition-chip>span { color:#526153 !important; font-weight:800 !important; }
+.condition-result { font-weight:900 !important; }
+.match-note { font-weight:900 !important; }
+.policy-card-footer {
+  background:#f1f3e9 !important;
+  border-top:1px solid #dfe5d8 !important;
+}
+.source-meta,.last-checked {
+  color:#526153 !important;
+  font-weight:700 !important;
+}
+
+/* 신청 일정 달력 */
+.calendar-grid { border-color:#d9dfd1 !important; border-radius:12px !important; overflow:hidden !important; }
+.calendar-weekday {
+  background:#e9eee3 !important;
+  color:#405744 !important;
+  font-weight:900 !important;
+}
+.calendar-day { background:#fffdf7 !important; }
+.calendar-day.is-today { background:#f5eadc !important; }
+.calendar-day.is-empty { background:#f3f1e9 !important; }
+.calendar-date { color:#29382e !important; font-weight:900 !important; }
+.calendar-month {
+  color:#304638 !important;
+  font-family:'Jua','Gowun Dodum',sans-serif !important;
+  font-size:21px !important;
+}
+.calendar-nav button {
+  background:#fffdf7 !important;
+  border:1px solid #cbd5c6 !important;
+  color:#405d45 !important;
+  border-radius:9px !important;
+  font-weight:900 !important;
+}
+.calendar-event.start { background:#e2eadc !important; color:#36543c !important; font-weight:900 !important; }
+.calendar-event.end { background:#f7e4d9 !important; color:#8f4f35 !important; font-weight:900 !important; }
+.calendar-help { color:#526153 !important; font-weight:700 !important; }
+
+/* 안내와 하단 */
+.notice {
+  background:#edf1e6 !important;
+  border:1px solid #d4dfcf !important;
+  border-radius:14px !important;
+}
+.notice h3 { color:#304638 !important; font-size:19px !important; }
+.notice p { color:#405044 !important; font-weight:700 !important; }
+.empty-state {
+  background:#fffdf7 !important;
+  border:1px dashed #aebda8 !important;
+  border-radius:17px !important;
+}
+.empty-state h3 { color:#304638 !important; font-size:22px !important; }
+.empty-state p { color:#526153 !important; font-weight:700 !important; }
+.footer {
+  background:#e9eee3 !important;
+  border-top:1px solid #d4dfcf !important;
+  color:#526153 !important;
+  font-weight:700 !important;
+}
+
+/* 본문 텍스트의 명도 대비 확보 */
+.field-help,.required-note,.section-heading p,.results-header p,
+.condition-label,.detail-label,.source-line,.source-meta,.last-checked,
+.calendar-help,.notice p,.empty-state p {
+  color:#59675c !important;
+  opacity:1 !important;
+}
+.condition-detail { color:#536255 !important; font-weight:600 !important; }
+.detail-value,.condition-value { color:#304035 !important; font-weight:800 !important; }
+a { color:#456b4b !important; font-weight:800; }
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
+  outline:3px solid #bd7955 !important;
+  outline-offset:3px !important;
+}
+@media(max-width:650px) {
+  .container { width:calc(100% - 24px) !important; }
+  .hero { padding:38px 0 42px !important; border-radius:0 0 20px 20px !important; }
+  .hero h1 { font-size:32px !important; }
+  .panel { padding:20px 15px !important; }
+  .brand { font-size:20px !important; }
 }
 
 </style>
