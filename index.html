@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f0dfaa">
+<meta name="theme-color" content="#f4f8fb">
 <title>나에게 맞는 지원 찾기</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #16345c;
@@ -2208,6 +2211,266 @@ body{font-weight:400 !important;letter-spacing:-.15px}
  .meadow-hero .hero-mascots img{width:min(72%,270px) !important}
 }
 
+
+/* =========================================================
+   COQUETTE CORE — pale blue toile / delicate floral wallpaper
+   Visual-only override. Existing layout and app behavior remain intact.
+   ========================================================= */
+:root {
+  --navy:#514b43 !important;
+  --navy-dark:#3e3933 !important;
+  --blue:#829db6 !important;
+  --sky:#f0f6fb !important;
+  --sky-dark:#e4eef6 !important;
+  --bg:#fbfaf7 !important;
+  --white:#fffefa !important;
+  --text:#403b35 !important;
+  --muted:#706a62 !important;
+  --border:#dce4e9 !important;
+  --green:#58765f !important;
+  --green-bg:#eaf1e9 !important;
+  --orange:#8a7048 !important;
+  --orange-bg:#f5f0e5 !important;
+  --red:#98645f !important;
+  --red-bg:#f6ecea !important;
+  --gray-bg:#eef1f2 !important;
+  --radius:18px !important;
+  --shadow:0 5px 18px rgba(72,83,91,.055) !important;
+}
+html,body { background-color:#fbfaf7 !important; color:#403b35 !important; }
+body {
+  background-image:url('assets/coquette-wallpaper.svg') !important;
+  background-repeat:repeat !important;
+  background-size:420px 420px !important;
+  background-attachment:fixed !important;
+  font-family:'Gowun Batang','Noto Serif KR',serif !important;
+  font-weight:500 !important;
+  letter-spacing:-.15px !important;
+}
+button,input,select,textarea {
+  font-family:'Gowun Batang','Noto Serif KR',serif !important;
+}
+.container { width:min(1260px,calc(100% - 44px)) !important; }
+a { color:#607f99 !important; }
+
+/* Quiet, ivory navigation */
+.header {
+  background:rgba(255,254,250,.96) !important;
+  color:#403b35 !important;
+  border-bottom:1px solid #dce4e9 !important;
+  box-shadow:0 2px 12px rgba(72,83,91,.04) !important;
+  padding:14px 0 !important;
+}
+.brand {
+  color:#403b35 !important;
+  font-family:'Gowun Batang','Noto Serif KR',serif !important;
+  font-size:21px !important;
+  font-weight:700 !important;
+  letter-spacing:-.5px !important;
+}
+.header-tag {
+  color:#617b91 !important;
+  background:#f2f7fa !important;
+  border:1px solid #dce7ee !important;
+  border-radius:999px !important;
+  font-weight:700 !important;
+}
+
+/* Pale blue title band, no character illustration */
+.hero {
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:hidden !important;
+  background:
+    linear-gradient(105deg,rgba(246,250,252,.97),rgba(231,240,247,.94)),
+    url('assets/coquette-wallpaper.svg') center/420px repeat !important;
+  color:#403b35 !important;
+  padding:49px 0 52px !important;
+  border-bottom:1px solid #d7e2e9 !important;
+  border-radius:0 0 24px 24px !important;
+}
+.hero:before {
+  content:"" !important;
+  position:absolute !important;
+  z-index:-1 !important;
+  width:280px !important;height:280px !important;
+  right:7% !important;top:-175px !important;
+  border:1px solid rgba(123,151,173,.18) !important;
+  border-radius:50% !important;
+  box-shadow:0 0 0 20px rgba(255,255,255,.24),0 0 0 42px rgba(123,151,173,.055) !important;
+}
+.hero:after { display:none !important; }
+.hero .container { position:relative !important; z-index:1 !important; display:block !important; }
+.hero-label {
+  color:#718ba0 !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:1.5px !important;
+}
+.hero h1 {
+  color:#403b35 !important;
+  font-family:'Gowun Batang','Noto Serif KR',serif !important;
+  font-size:clamp(32px,4vw,45px) !important;
+  font-weight:700 !important;
+  line-height:1.42 !important;
+  letter-spacing:-1px !important;
+}
+.hero p { color:#625d56 !important; font-weight:500 !important; line-height:1.9 !important; }
+.hero-features span {
+  background:rgba(255,255,255,.82) !important;
+  color:#627d94 !important;
+  border:1px solid #dce7ee !important;
+  border-radius:999px !important;
+  font-weight:700 !important;
+}
+
+/* Ivory surfaces with fine blue-gray outlines */
+.main { padding-top:30px !important; }
+.panel,.policy-card,.dashboard-grid #calendarPanel {
+  background:rgba(255,254,250,.97) !important;
+  border:1px solid #dce4e9 !important;
+  border-radius:19px !important;
+  box-shadow:0 5px 18px rgba(72,83,91,.055) !important;
+}
+.panel { padding:27px !important; }
+.section-heading h2,.results-header h2,.detail-section h4,
+.notice h3,.empty-state h3,.card-heading h3,.policy-title,.calendar-month {
+  color:#49433c !important;
+  font-family:'Gowun Batang','Noto Serif KR',serif !important;
+  font-weight:700 !important;
+  letter-spacing:-.45px !important;
+}
+.section-heading h2 { font-size:23px !important; }
+.section-heading p,.results-header p,.field-help,.required-note {
+  color:#706a62 !important;
+  font-weight:500 !important;
+}
+.field label,.field-title,.eligibility-title { color:#4b453e !important; font-weight:700 !important; }
+
+/* Inputs and selection states */
+.input,.select,.sort-wrap select {
+  background:#fffefa !important;
+  color:#403b35 !important;
+  border:1px solid #d5e0e7 !important;
+  border-radius:11px !important;
+  min-height:47px !important;
+}
+.input::placeholder { color:#96928b !important; }
+.input:focus,.select:focus {
+  border-color:#a9bfd0 !important;
+  outline:3px solid #edf4f8 !important;
+}
+.check-option {
+  background:#fffefa !important;
+  color:#514b43 !important;
+  border:1px solid #dce4e9 !important;
+  border-radius:11px !important;
+  font-weight:600 !important;
+}
+.check-option:has(input:checked) {
+  background:#edf4f8 !important;
+  border-color:#b7cad8 !important;
+  color:#4c6478 !important;
+}
+.check-option input { accent-color:#8da9bf !important; }
+
+/* All buttons: near-white sky blue, restrained and consistent */
+.btn {
+  border-radius:999px !important;
+  min-height:44px !important;
+  font-weight:700 !important;
+  letter-spacing:-.15px !important;
+  box-shadow:none !important;
+}
+.btn-primary,.btn-primary:hover {
+  background:#e7f0f6 !important;
+  color:#4b6275 !important;
+  border:1px solid #cbdbe6 !important;
+  box-shadow:none !important;
+}
+.btn-secondary,.btn-secondary:hover {
+  background:#f1f6f9 !important;
+  color:#53697a !important;
+  border:1px solid #dce7ee !important;
+}
+.btn-outline {
+  background:#fffefa !important;
+  color:#607b92 !important;
+  border:1px solid #cbdbe6 !important;
+}
+.calendar-nav button {
+  background:#f1f6f9 !important;
+  color:#53697a !important;
+  border:1px solid #dce7ee !important;
+  border-radius:999px !important;
+}
+
+/* Policy cards */
+.summary-chip {
+  background:#fffefa !important;
+  color:#706a62 !important;
+  border:1px solid #dce4e9 !important;
+  border-radius:999px !important;
+}
+.summary-chip strong { color:#627f97 !important; }
+.card-top,.policy-card-footer { background:#f4f7f8 !important; border-color:#e1e7e9 !important; }
+.category-tag { background:#eaf1f5 !important; color:#607b92 !important; border-radius:999px !important; }
+.card-heading h3,.policy-title { color:#49433c !important; }
+.card-description { color:#625d56 !important; }
+.policy-info-block { background:#f7f8f6 !important; border:1px solid #e5e9e7 !important; border-radius:12px !important; }
+.info-label,.policy-section-label { color:#71889a !important; }
+.policy-info-block p,.application-date,.detail-value,.condition-value { color:#49443d !important; }
+.condition-chip { background:#f5f7f7 !important; border:1px solid #e2e8e9 !important; border-radius:9px !important; }
+.condition-chip>span,.condition-detail,.source-meta,.last-checked { color:#706a62 !important; }
+.status-before,.status-unknown { background:#eef2f3 !important; color:#64727a !important; }
+.status-open,.status-always { background:#eaf1e9 !important; color:#58745d !important; }
+.status-ended { background:#f6ecea !important; color:#98645f !important; }
+.match-note.match { background:#eaf1e9 !important; color:#58745d !important; }
+.match-note.mismatch { background:#f6ecea !important; color:#98645f !important; }
+.match-note.unknown { background:#f5f0e5 !important; color:#806b49 !important; }
+.deadline-alert { background:#f6ecea !important; color:#98645f !important; border-radius:999px !important; }
+.policy-card.deadline-soon { border-color:#d8b9b5 !important; }
+
+/* Calendar: subtle blue stationery palette */
+.calendar-grid { border-color:#dce4e9 !important; border-radius:12px !important; overflow:hidden !important; }
+.calendar-weekday { background:#edf3f7 !important; color:#617b91 !important; }
+.calendar-day { background:#fffefa !important; }
+.calendar-day.is-today { background:#f0f6fa !important; }
+.calendar-day.is-empty { background:#f7f8f6 !important; }
+.calendar-date { color:#49443d !important; }
+.calendar-event.start { background:#e7f0f6 !important; color:#5d7890 !important; }
+.calendar-event.end { background:#f4eae8 !important; color:#93645f !important; }
+.calendar-help { color:#706a62 !important; }
+
+/* Notices and footer */
+.notice { background:#f0f5f7 !important; border:1px solid #dce7ec !important; border-radius:15px !important; }
+.notice h3 { color:#4b5962 !important; }
+.notice p { color:#625f59 !important; }
+.empty-state { background:#fffefa !important; border:1px dashed #bdcdd7 !important; }
+.empty-state h3 { color:#49433c !important; }
+.empty-state p { color:#706a62 !important; }
+.footer { background:#f3f6f6 !important; border-top:1px solid #dce4e9 !important; color:#706a62 !important; }
+a { color:#607f99 !important; }
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
+  outline:3px solid #b8cbd9 !important;
+  outline-offset:3px !important;
+}
+@media(max-width:760px) {
+  .container { width:calc(100% - 28px) !important; }
+  .hero { padding:38px 0 41px !important; }
+  .hero:before { width:180px !important;height:180px !important;right:-75px !important;top:-105px !important; }
+  .hero h1 { font-size:32px !important; }
+  .panel { padding:20px 15px !important; }
+}
+@media(max-width:520px) {
+  .container { width:calc(100% - 22px) !important; }
+  .hero { padding:32px 0 35px !important; }
+  .hero h1 { font-size:29px !important; }
+  .hero p { font-size:13px !important; }
+  .panel { padding:17px 13px !important; }
+  .brand { font-size:19px !important; }
+}
+
 </style>
 </head>
 
@@ -2220,8 +2483,8 @@ body{font-weight:400 !important;letter-spacing:-.15px}
   </div>
 </header>
 
-<section class="hero meadow-hero">
-  <div class="container meadow-hero-inner">
+<section class="hero">
+  <div class="container">
     <div class="hero-copy">
       <span class="hero-label">MY SUPPORT FINDER</span>
       <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
@@ -2235,10 +2498,7 @@ body{font-weight:400 !important;letter-spacing:-.15px}
         <span>신청 기간 자동 판정</span>
       </div>
     </div>
-    <div class="hero-mascots" aria-label="참고 이미지 속 세 캐릭터">
-      <img src="data:image/jpeg;base64,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" alt="세 마스코트 캐릭터" />
-    </div>
-  </div>
+</div>
 </section>
 
 <main class="container main">
