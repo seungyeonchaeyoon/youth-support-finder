@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f4f8fb">
-<title>나에게 맞는 지원 찾기</title>
+<title>BENE:FIT</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2471,34 +2471,56 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
   .brand { font-size:19px !important; }
 }
 
+
+/* BENE:FIT 브랜드 타이틀 */
+.hero {
+  color: #000 !important;
+}
+.hero-copy {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+.hero .brand-title {
+  color: #000 !important;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif !important;
+  font-size: clamp(42px, 6vw, 64px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.8px !important;
+  margin: 0 0 9px !important;
+}
+.hero .brand-slogan {
+  color: #000 !important;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif !important;
+  font-size: clamp(18px, 2.4vw, 23px) !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  margin: 0 0 5px !important;
+  max-width: none !important;
+}
+.hero .brand-description {
+  color: #000 !important;
+  font-family: 'Gowun Batang', 'Noto Serif KR', serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.7 !important;
+  margin: 0 !important;
+  max-width: none !important;
+}
+
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="container header-inner">
-    <a class="brand" href="#" id="homeLink">나에게 맞는 지원 찾기</a>
-    <span class="header-tag">청년 · 학생 지원 정보</span>
-  </div>
-</header>
-
 <section class="hero">
   <div class="container">
     <div class="hero-copy">
-      <span class="hero-label">MY SUPPORT FINDER</span>
-      <h1>나에게 맞는 지원,<br>조건에 맞춰 찾아보세요.</h1>
-      <p>
-        나이와 거주 지역, 학생 여부, 소득 구간 및 수급 자격을 입력하면
-        관련 지원 정책을 확인하고 자격 조건을 비교할 수 있습니다.
-      </p>
-      <div class="hero-features">
-        <span>공식 정책 정보</span>
-        <span>조건별 자격 비교</span>
-        <span>신청 기간 자동 판정</span>
-      </div>
+      <h1 class="brand-title">BENE:FIT</h1>
+      <p class="brand-slogan">Benefits made for you.</p>
+      <p class="brand-description">나에게 맞는 지원, 조건에 맞춰 찾아보세요.</p>
     </div>
-</div>
+  </div>
 </section>
 
 <main class="container main">
@@ -4255,16 +4277,7 @@ sortSelect.addEventListener("change", () => {
   renderResults(results);
 });
 
-$("#homeLink").addEventListener("click", event => {
-  event.preventDefault();
-
-  resetForm();
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-});
+// 상단 브랜드 링크를 제거했으므로 별도의 홈 링크 이벤트는 연결하지 않습니다.
 
 bindStartButton();
 
